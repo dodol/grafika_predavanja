@@ -1,0 +1,133 @@
+%\makeatletter
+%\def\beamer@calltheme#1#2#3{%
+%	\def\beamer@themelist{#2}
+%	\@for\beamer@themename:=\beamer@themelist\do
+%	{\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
+%
+%\def\usefolder#1{
+%	\def\beamer@themelocation{#1}
+%}
+%\def\beamer@themelocation{}
+
+%\usefolder{../config}
+
+\usetheme[
+block=fill,
+titleformat=regular,
+progressbar=frametitle
+]{metropolis}
+%\metroset[everytitleformat=regular] % regular, lowercase, uppercase ]
+%\metroset[inner/block=fill]
+
+%\setbeameroption{show notes} 
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+
+%\ Hrvatski znakovi
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[croatian]{babel}
+\usepackage{todonotes}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\selectlanguage{croatian} % american ngerman
+\usepackage{todonotes}
+
+% Koristenje Latin modern fonta
+% Bez toga na nekim racunalima baca
+% err: Font <taj i taj> at <mala velicina, npr4.0pt> not loadable: Metric (TFM) file not found. \end{frame}
+\usepackage{lmodern}
+
+
+\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
+%\usepackage{natbib}
+%\usepackage{bibentry}
+\usepackage{scrextend}
+\usepackage{hyperref}
+%\usepackage[pdfa=true]{hyperref}
+\hypersetup{%
+    %draft, % = no hyperlinking at all (useful in b/w printouts)
+    %colorlinks=true, 
+    linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,% 
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    %urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    %urlcolor=Blue, linkcolor=Blue, citecolor=Red, %pagecolor=Black,%
+    %pdftitle={\myTitle},%
+    %pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}, %
+    unicode = true 
+} 
+
+%\usepackage[pdftex]{graphicx}
+% declare the path(s) where your graphic files are
+\graphicspath{{./}{./figures/}}
+
+
+\newcommand{\executeiffilenewer}[3]{%
+	\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+	{\pdffilemoddate{#2}}>0%
+	{\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+	\executeiffilenewer{#1.svg}{#1.pdf}%
+	{inkscape -z -C --file=#1.svg %
+		--export-pdf=#1.pdf --export-latex}%
+	\input{#1.pdf_tex}%
+}
+
+
+% http://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage[semibold]{sourcecodepro}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\small\ttfamily,
+		otherkeywords={self},             % Add keywords here
+		keywordstyle=\small\ttfamily\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\small\ttfamily\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false            % 
+	}}
+	
+	
+	% Python environment
+	\lstnewenvironment{python}[1][]
+	{
+		\pythonstyle
+		\lstset{#1}
+	}
+	{}
+	
+	% Python for external files
+	\newcommand\pythonexternal[2][]{{
+			\pythonstyle
+			\lstinputlisting[#1]{#2}}}
+	
+	% Python for inline
+	\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
