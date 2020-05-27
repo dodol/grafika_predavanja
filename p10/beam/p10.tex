@@ -33,7 +33,7 @@
 
 \title{Ray tracing}
 
-\subtitle{Ray Tracing is the future and ever will be\ldots - David Kirk}
+\subtitle{Ray tracing is the future and ever will be\ldots - David Kirk}
 \institute{Računalna grafika}
 
 % Delete this, if you do not want the table of contents to pop up at
@@ -61,23 +61,17 @@
   \tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
-\section{Uvod}
 
-\begin{frame}{Uvodno}
-\begin{itemize}
-	\item Neriješeni problemi 70-ih
-	\begin{itemize}
-		\item Sjene
-		\item Refleksija
-		\item Prozirnost
-	\end{itemize}
-	\item Turner Whitted - An improved illumination model for shaded display, 1979
-\end{itemize}
-\begin{figure}
-	\includegraphics[width=0.4\textwidth]{./slike/whitted-spheres.jpg}
-\end{figure}
-\end{frame}
+
 \section{Algoritam bacanja zrake - ray casting}
+\begin{frame}{Uvod}
+\begin{itemize}
+	\item Poznat još od početka 70-ih
+	\item Izrazito jednostavan
+	\item Danas osnovni alat
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Ray casting}
 \begin{itemize}
 	\item Za svaki piksel
@@ -130,22 +124,124 @@
 	}
 \end{algorithm*}
 \end{frame}
-\section{Kreiranje primarne zrake}
-\begin{frame}{Kreiranje primarne zrake}
+
+\begin{frame}{Ray casting algoritam}
 \begin{itemize}
-	\item za svaki piksel
+	\item Za svaki piksel
 	\begin{itemize}
 		\item \alert{Kreirati zraku od oka}
 		\item Za svaki objekt u sceni
 		\begin{itemize}
 			\item Naći sjecište sa zrakom
 			\item Zadržati najbližu
-			\item Sjenčanje - ovisi o svjeltu i normali
+			\item Sjenčanje - ovisi o svjetlu i normali
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Ray casting algoritam}
+\begin{figure}
+	\includegraphics[width=0.4\textwidth]{./slike/zraka.png}
+\end{figure}
+\begin{align*}
+	\textbf{p}(t) = \textbf{e} + t(\textbf{s} - \textbf{e})
+\end{align*}
+\end{frame}
+
+\begin{frame}{Ray casting algoritam}
+\begin{itemize}
+	\item Za svaki piksel
+	\begin{itemize}
+		\item Kreirati zraku od oka
+		\item \alert{Za svaki objekt u sceni}
+		\begin{itemize}
+			\item Naći sjecište sa zrakom
+			\item Zadržati najbližu
+			\item Sjenčanje - ovisi o svjetlu i normali
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ray casting algoritam}
+\begin{figure}
+	\includegraphics[width=0.4\textwidth]{./slike/sjeciste_kugla.png}
+\end{figure}
+\begin{itemize}
+	\item $\vec{l}$ je okomit vektor na $\textbf{D}$
+	\item Ako je $||\vec{l}|| > R$, nema sjecišta
+	\item Ako je $||\vec{l}|| < R$, samo treba izračunati $l'$
+	\item Zadržati bližu točku
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ray casting algoritam}
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{./slike/trokut.png}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.5\textwidth}  %%<--- here
+		\begin{itemize}
+			\item $\vec{m}$ i $\vec{n}$ su okomiti vektori: $\vec{m}\cdot\vec{n}=0$
+			\item $M = P+t\textbf{D}$
+			\item $\vec{m} = M-Q$
+			\item $\left(P+t\textbf{D}\right)\cdot \vec{n}=0$
+			\item $t\textbf{D}\cdot\vec{n} + \left(P-Q\right)\cdot \vec{n}=0$
+		\end{itemize}
+		\begin{align*}
+		t = \frac{-\left(P-Q\right)\cdot\vec{n}}{\textbf{D}\cdot \vec{n}}
+		\end{align*}
+		\begin{itemize}
+			\item $\textbf{D}\cdot \vec{n}=0$, 
+			\item $\textbf{D} \perp \vec{n}$
+			\item nema sjecišta, jer je ravnina paralelna sa zrakom
+		\end{itemize}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Ray casting algoritam}
+
+\begin{figure}
+	\includegraphics[width=0.4\textwidth]{./slike/trokut2.png}
+\end{figure}
+\begin{itemize}
+	\item Nakon što dobijemo $M$
+\end{itemize}
+\begin{align*}
+M = \alpha Q_1 + \beta Q_2 + \gamma Q_3 \\
+ \alpha + \beta + \gamma = 1
+\end{align*}
+\end{frame}
+
+\begin{frame}{Ray casting algoritam}
+\begin{itemize}
+	\item Za svaki piksel
+	\begin{itemize}
+		\item Kreirati zraku od oka
+		\item Za svaki objekt u sceni
+		\begin{itemize}
+			\item Naći sjecište sa zrakom
+			\item Zadržati najbližu
+			\item \alert{Sjenčanje - ovisi o svjetlu i normali}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ray casting algoritam}
+\begin{figure}
+	\includegraphics[width=0.4\textwidth]{./slike/sjencanje.png}
+\end{figure}
+\begin{align*}
+I = k_aI_a + I_i\left[k_d\left(\mathbf{n}\cdot\mathbf{l}\right)+
+k_s\left(\mathbf{v}\cdot\mathbf{r}\right)^q\right]
+\end{align*}
+\end{frame}
+\section{Kreiranje primarne zrake}
 \begin{frame}{Kreiranje primarne zrake}
 \begin{center}
 \includegraphics[width=3cm]{slike/ray_from_eye.png}
@@ -237,7 +333,7 @@ $$
 \end{frame}
 \begin{frame}{Kreiranje primarne zrake, contd.}
 \begin{center}
-\includegraphics[width=2cm]{slike/ray_viewing_window_perspective.png} 
+\includegraphics[width=4cm]{slike/ray_viewing_window_perspective.png} 
 \end{center} 
 Sada smo izračunali koordinate $(u,v, w)$. Potrebno je kreirati jednadžbu pravca:Imamo $\textbf{e}$, $d$, $(u,v, w)$.
 $$\textbf{p}(t) = \textbf{e} + t(\textbf{s} - \textbf{e})$$
@@ -406,6 +502,22 @@ Samo moramo provjeriti uvjet za trokut (na vrhu ovog slajda).
 
 
 \end{frame}	
+
+\section{Ray tracing}
+\begin{frame}{Uvodno}
+\begin{itemize}
+	\item Neriješeni problemi 70-ih
+	\begin{itemize}
+		\item Sjene
+		\item Refleksija
+		\item Prozirnost
+	\end{itemize}
+	\item Turner Whitted - An improved illumination model for shaded display, 1979
+\end{itemize}
+\begin{figure}
+	\includegraphics[width=0.4\textwidth]{./slike/whitted-spheres.jpg}
+\end{figure}
+\end{frame}
 
 \section{Sjene}
 
