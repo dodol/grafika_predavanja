@@ -17,6 +17,7 @@
 \usepackage{xcolor}
 \usepackage[normalem]{ulem}
 \usepackage{mathtools}
+\usepackage{cancel}
 
 \definecolor{erlangenlyellow}{RGB}{123, 25, 121}
 %\usepackage[utf8x]{inputenc}
@@ -519,6 +520,38 @@ Samo moramo provjeriti uvjet za trokut (na vrhu ovog slajda).
 \end{figure}
 \end{frame}
 
+\begin{frame}{Pogled s visine}
+\begin{tiny}
+	Preuzeto sa \texttt{scratchapixel.com}
+\end{tiny}
+
+\begin{figure}
+	\includegraphics[width=0.4\textwidth]{./slike/rt-whitted-example}	
+\end{figure}
+Ako je u sjeni:
+\begin{align*}
+I = k_aI_a + \xcancel{I_i\left[k_d\left(\mathbf{n}\cdot\mathbf{l}\right)+
+k_s\left(\mathbf{v}\cdot\mathbf{r}\right)^q\right]}
+\end{align*}
+Refleksija:
+\begin{align*}
+I = k_aI_a + I_i\left[k_d\left(\mathbf{n}\cdot\mathbf{l}\right)+
+	k_s\left(\mathbf{v}\cdot\mathbf{r}\right)^q\right] + k_rI_o
+\end{align*}
+Prozirnost:
+\begin{align*}
+I = k_aI_a + I_i\left[k_d\left(\mathbf{n}\cdot\mathbf{l}\right)+
+k_s\left(\mathbf{v}\cdot\mathbf{r}\right)^q\right] + k_tI_o
+\end{align*}
+\end{frame}
+
+\begin{frame}{Pogled s visine}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{./slike/rt-recursive}
+\end{figure}
+\tiny{Preuzeto sa \texttt{scratchapixel.com}}
+\end{frame}
+
 \section{Sjene}
 
 \begin{frame}{Sjene}
@@ -569,7 +602,7 @@ Nije potrebno naći najbliži objekt, dovoljno je da je samo jedan između zrake
 \end{center}
 \begin{itemize}
 \item Odaslati zraku simetrično na normalu
-\item pomnožiti sa zrcalnom komponentom $k_s$
+\item pomnožiti sa zrcalnom komponentom $k_s$, ili nešto slično tome
 \end{itemize}
 \end{frame}
 
