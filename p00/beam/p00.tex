@@ -1,0 +1,142 @@
+
+\documentclass[9pt]{beamer}
+\input{../../config/config.tex}
+%\documentclass[ucs]{beamer}
+%\usetheme[menuwidth={0.3\paperwidth}]{erlangen}
+%\setbeamercovered{transparent=20} 
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{mathtools}
+
+\definecolor{erlangenlyellow}{RGB}{123, 25, 121}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{default}
+%\usepackage[T1]{fontenc}
+
+\usepackage{verbatim}
+\usepackage{listings}
+
+
+\usepackage{subcaption}
+\usepackage{lmodern}
+
+\title{Uvod}
+
+\subtitle{how Occam would be ashamed}
+\institute{Računalna grafika}
+
+
+\begin{document}
+\begin{frame}
+ \titlepage
+\end{frame}
+
+%\begin{frame}{Sadržaj}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+\section{Obveze}
+\begin{frame}
+	\begin{itemize}
+		\item Tijekom semestra je moguće dobiti najviše 50 bodova, kao i na završnom ispitu.
+		\item Obveze: Uspješno položena dva kolokvija i jedna domaća zadaća.
+	\end{itemize}
+\end{frame}
+\begin{frame}{Domaća zadaća}
+	\begin{itemize}
+		\item Domaća zadaća iznosi $K_{dz} = 20$ bodova. 
+		\item Najmanji broj bodova za koje se smatra da je student/ica uspješno izvršila svoj zadatak iznosi $K_{dz} = 11$ bodova. 
+		\item Ako se ostvari $K_{dz}<11$ bodova, onda se zahtijeva da ispravi kod toliko da ostvari najmanje $11$ bodova, ili, $K_{dz}\ge 11 $. 
+		\begin{itemize}
+			\item btw, to se rijetko dešava.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}{Kolokviji}
+	\begin{itemize}
+		\item Svaki kolokvij iznosi $K_k = 15$ bodova. 
+		\item Najmanji broj bodova za koje se smatra da je student/ica uspješno položila kolokvij iznosi $K_k = 7$ bodova, odnosno najviše $30$ i minimalno $14$ bodova iz oba kolokvija.
+		\item Ako se na jednom ili oba kolokvija dobije manje od $K_k < 7$ bodova, piše se popravni kolokvij koji obuhvaća gradivo oba kolokvija i bodovno iznosi najviše $30$ bodova.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Konačno, bodovi}
+	\begin{itemize}
+		\item Ukupan broj bodova tijekom semestra Ks računa se prema izrazu:
+	\end{itemize}
+	\begin{align*}
+	K_s = K_{dz}+ K_k
+	\end{align*}
+
+gdje je $K_{dz}$ broj bodova domaće zadaće, a $K_k$ broj bodova na kolokvijima. 
+\\\hrulefill\\
+Kolokviji, 
+	\begin{align*}
+		\textrm{if}&&  K1>=7 \&\& K2>=7 &:&          K_k = K_1 + K_2 \\
+		\textrm{else}&&   &&          K_k = \frac{K_1+K_2 + K_p}{2}
+	\end{align*}
+Ovdje su $K_1$ i $K_2$ broj bodova na 1. odnosno 2. kolokviju, a $K_p$ broj bodova na popravnom kolokviju.
+
+\end{frame}
+
+
+\begin{frame}{Bodovi tldr;}
+	\begin{block}{}
+		\begin{itemize}
+			\item Minimalni broj bodova: dz 11, kolokviji 7 bodova. 
+			\item Ako  je jedan ili oba kolokvija <7, piše se jedan popravni kolokvij koji obuhvaća oba kolokvija. 
+			\item Ukupna ocjena iz kolokvija je srednja vrijednost oba kolokvija i popravnog kolokvija. 
+			\item Ako je dz <11, onda tražim da ispravite kod i predate opet.  
+		\end{itemize}
+	\end{block}
+\end{frame}
+\section{O kolegiju}
+\begin{frame}
+	\begin{columns}[t]
+		
+		
+		\begin{column}{0.4 \textwidth}
+			\textbf{Predavanja}
+				\begin{itemize}
+				\item Uvod u računalnu grafiku
+				\item Osnovni koncepti/algoritmi/tehnike
+				\item Interpolacije
+				\item Geometrijske transformacije
+				\item Krivulje i plohe
+				\item Strukture podataka
+			\end{itemize}
+		\end{column}
+
+		
+		\begin{column}{0.4 \textwidth}
+			\textbf{Vježbe}
+		\begin{itemize}
+			\item C++
+			\item CMake
+			\item OpenGL
+			\item GLFW, GLEW, glm
+			\item shaders
+			\item Preferiram Linux, ali ok su i Windows-i
+		\end{itemize}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Literatura}
+	\begin{itemize}
+		\item Čupić M. i Mihajolović Ž. ; \textit{Interaktivna računalna grafika kroz primjere u OpenGL-u}
+		\item Marschner S., Shirley P.; \textit{Fundamentals of Computer Graphics}, 4. izdanje, 2016
+	\end{itemize}
+\end{frame}
+\plain{Pitanja?}
+\end{document}
