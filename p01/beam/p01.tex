@@ -1,0 +1,222 @@
+
+\documentclass[9pt]{beamer}
+\input{../../config/config.tex}
+%\documentclass[ucs]{beamer}
+%\usetheme[menuwidth={0.3\paperwidth}]{erlangen}
+%\setbeamercovered{transparent=20} 
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{mathtools}
+
+\definecolor{erlangenlyellow}{RGB}{123, 25, 121}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{default}
+%\usepackage[T1]{fontenc}
+
+\usepackage{verbatim}
+\usepackage{listings}
+
+
+\usepackage{subcaption}
+\usepackage{lmodern}
+
+\title{Osnove}
+
+\subtitle{The language of matter writ large}
+\institute{Računalna grafika}
+
+
+\begin{document}
+\begin{frame}
+ \titlepage
+\end{frame}
+
+%\begin{frame}{Sadržaj}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+\section{Točka i vektor}
+\begin{frame}{Točka}
+	\begin{center}
+		\includegraphics[height=7cm]{./slike/linear_algebra_a_point.png}
+	\end{center}
+\end{frame}
+\begin{frame}{Vektor}
+	\begin{center}
+		\includegraphics[height=7cm]{./slike/linear_algebra_a_vector.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Točka vs. vektor}
+	\begin{itemize}
+		\item Točka: \textit{položaj}, ili \textit{pozicija}
+		\item Vektor: usmjerena \textit{dužina}. Sastoji se od \textit{smjera} i \textit{duljine} 
+		\item isti oblik $\begin{pmatrix} x & y & z\end{pmatrix}^T$ 
+		\item homogene koordinate:
+		\begin{itemize}
+			\item Točka: $\begin{pmatrix} x & y & z & 1\end{pmatrix}^T$
+			\item Vektor: $\begin{pmatrix} x & y & z & 0\end{pmatrix}^T$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{točka + vektor = točka}
+	\begin{center}
+		\includegraphics[height=5cm]{./slike/linear_algebra_point_plus_vector.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{točka - točka = vektor}
+	\begin{center}
+		\includegraphics[height=5cm]{./slike/linear_algebra_point_minus_vector.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{vektor + vektor = vektor}
+	\begin{center}
+		\includegraphics[height=5cm]{./slike/linear_algebra_vector_plus_vector.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Vektori: množenje skalarom}
+	\begin{center}
+		\includegraphics[height=5cm]{./slike/linear_algebra_vector_operations.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Vektori, osnove}
+	\begin{align*}
+	\vec{u} + (\vec{v} + \vec{w}) &= (\vec{u} + \vec{v}) + \vec{w} \\
+	\vec{v} + \vec{w} &= \vec{w} + \vec{v}
+	\end{align*}
+	\begin{columns}[t]
+		\begin{column}{0.4\textwidth}
+			\begin{align*}
+			a(\vec{v} + \vec{w}) &= a\vec{v} + a\vec{w} \\
+			(a+b)\vec{v}  &= a\vec{v} + b\vec{v} \\
+			a(b\vec{v})  &= (ab)\vec{v}
+			\end{align*}
+		\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{align*}
+		\vec{v} + 0 &= \vec{v}\\
+		\vec{v} + \vec{w} &= 0 \rightarrow \vec{w} = -\vec{v} \\
+		1\vec{v} &= \vec{v}\\
+		\end{align*}
+	\end{column}
+	\end{columns}
+	\begin{align*}
+		\vec{v} - \vec{w} &= \vec{v} + (-\vec{w}) \\
+		\frac{\vec{v}}{a} &= \left(\frac{1}{a}\right)\vec{v}
+	\end{align*}
+\end{frame}
+\begin{frame}{vektori, još operacija}
+	\begin{align*}
+	\vec{v}_1 = \begin{pmatrix}
+	x_1 \\ y_1 \\ z_1
+	\end{pmatrix}
+	, \;\;\;
+	\vec{v}_2 = \begin{pmatrix}
+	x_2 \\ y_2 \\ z_2
+	\end{pmatrix}
+	\end{align*}
+	\begin{itemize}
+		\item Skalarni produkt: $\vec{v}_1 \cdot \vec{v}_2 = x_1x_2 + y_1y_2+z_1z_2 = \vec{v}_1^T \vec{v}_2$
+		\item Norma (dužina): $\lVert\vec{v}_1 \rVert = \sqrt{\vec{v}_1 \cdot \vec{v}_1} = \sqrt{x_1^2 + y_1^2+z_1^2}$
+		\item Normalizacija: $\hat{v}_1 = \frac{\vec{v}_1}{\lVert\vec{v}_1 \rVert} \Rightarrow\hat{v}_1 = 1 $
+	\end{itemize}
+
+	\begin{block}{Svojstva skalarnog produkta}
+		\begin{itemize}
+			\item komutativnost: $\vec{v}_1 \cdot \vec{v}_2 = \vec{v}_2 \cdot \vec{v}_1$
+			\item asocijativnost: $\vec{v}_1 \cdot (\vec{v}_2 + \vec{v}_3) = \vec{v}_1 \cdot \vec{v}_2 + \vec{v}_1 \cdot \vec{v}_3$
+		\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\begin{frame}{vektori i kutevi}
+	\begin{itemize}
+		\item Kut između dva vektora:
+	\end{itemize}
+	\begin{center}
+		\includegraphics[height=2cm]{./slike/linear_algebra_vector_angle.png}
+	\end{center}
+	\begin{itemize}
+		\item Okomiti vektori
+	\end{itemize}
+	\begin{center}
+		\includegraphics[height=1.5cm]{./slike/linear_algebra_vector_orthogonal.png}
+	\end{center}
+	Vektori su okomiti ako vrijedi: $\vec{v}_1 \cdot \vec{v}_2 = 0$ \\
+	Vektori su \textbf{ortonormalni} ako vrijedi:  $\vec{v}_1 \cdot \vec{v}_2 = 0$, ali $\lVert\vec{v}_1 \rVert = 1$ i $\lVert\vec{v}_2 \rVert = 1$
+\end{frame}
+
+\begin{frame}{Vektorski produkt}
+	\begin{center}
+		\includegraphics[height=3cm]{./slike/linear_algebra_cross_product.png}
+	\end{center}
+	\begin{align*}
+	\vec{v}_1 \times \vec{v}_2 &= \begin{pmatrix}
+	\hat{i} & \hat{j} & \hat{k} \\
+	x_1 & y_1 & z_1 \\
+	x_2 & y_2 & z_2
+	\end{pmatrix} \\
+	& = \hat{i}(y_1z_2 - y_2z_1) + \hat{j}(x_1z_3 - x_3z_1) + \hat{k}(x_1y_2 - x_2y_1) \\
+	& =  \begin{pmatrix}
+	y_1z_2 - y_2z_1 \\
+	x_1z_3 - x_3z_1 \\
+	x_1y_2 - x_2y_1
+	\end{pmatrix}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Vektorski produkt, svojstva}
+	\begin{itemize}
+		\item \textbf{nije} komutativan
+	\end{itemize}
+	\begin{align*}
+	\vec{u} \times \vec{v} = -(\vec{v} \times \vec{u})
+	\end{align*}
+	\begin{itemize}
+		\item ali vrijedi distributivnost za zbrajanje i množenje skalarom:
+	\end{itemize}
+	\begin{align*}
+		\vec{u} \times (\vec{v} + \vec{w}) = \vec{u} \times \vec{v} + \vec{u} \times \vec{w} \\
+		(a\vec{u}) \times \vec{v} = \vec{u} \times (a\vec{v}) = a (\vec{u} \times \vec{v})
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Vektorski produkt, norma}
+	\begin{center}
+		\includegraphics[height=3cm]{./slike/linear_algebra_cross_product_wiki.png}
+	\end{center}
+
+	\begin{align*}
+	\lVert \vec{a} \times \vec{b} \rVert = \lVert \vec{a} \rVert \cdot \lVert \vec{b} \rVert |\sin \theta|
+	\end{align*}
+\end{frame}	
+
+\begin{frame}{Pravac}
+	\begin{center}
+		\includegraphics[height=3cm]{./slike/linear_algebra_pravci.png}
+	\end{center}
+\end{frame}
+\begin{frame}{Literatura}
+	\begin{itemize}
+		\item Čupić M. i Mihajolović Ž. ; \textit{Interaktivna računalna grafika kroz primjere u OpenGL-u}
+		\item Marschner S., Shirley P.; \textit{Fundamentals of Computer Graphics}, 4. izdanje, 2016
+	\end{itemize}
+\end{frame}
+\plain{Pitanja?}
+\end{document}
