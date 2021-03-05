@@ -207,6 +207,39 @@
 	\end{align*}
 \end{frame}	
 
+\begin{frame}{Ortonormalni vektori}
+	\begin{center}
+		\includegraphics[height=2cm]{./slike/ortonormalna_baza.png}
+	\end{center}
+	\begin{align*}
+		\lVert \mathbf{u} \rVert = \lVert \mathbf{v} \rVert = \lVert \mathbf{w} \rVert = 1
+	\end{align*}
+	\begin{align*}
+		 \mathbf{u} \cdot  \mathbf{v} =  \mathbf{v} \cdot  \mathbf{w} =  \mathbf{u} \cdot  \mathbf{w} = 0	
+	\end{align*}
+	Koordinatni sustav je \textit{desni} ako vrijedi: 
+	\begin{align*}
+	\mathbf{w} = \mathbf{u} \times  \mathbf{v}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Konstrukcija ortonormalne baze}
+	Duž vektora $\mathbf{a}$ 
+	\begin{itemize}
+		\item $\mathbf{w} = \frac{\mathbf{a}}{\lVert\mathbf{a}\rVert}$
+		\item Odaberemo bilo kakav ne kolinearni vektor $\mathbf{t}$
+		\item $\mathbf{u} = \frac{\mathbf{t}\times \mathbf{w}}{\lVert\mathbf{t}\times \mathbf{w}\rVert}$
+		\item $\mathbf{v} = \mathbf{w}\times \mathbf{u}$
+	\end{itemize}
+	Iz dva vektora  $\mathbf{a}$  i  $\mathbf{b}$ 
+	\begin{itemize}
+		\item $\mathbf{w} = \frac{\mathbf{a}}{\lVert\mathbf{a}\rVert}$
+		\item Odaberemo bilo kakav ne kolinearni vektor $\mathbf{t}$
+		\item $\mathbf{u} = \frac{\mathbf{b}\times \mathbf{w}}{\lVert\mathbf{b}\times \mathbf{w}\rVert}$
+		\item $\mathbf{v} = \mathbf{w}\times \mathbf{u}$
+	\end{itemize}
+\end{frame}
+	
 \begin{frame}{Pravac}
 	\begin{center}
 		\includegraphics[height=3cm]{./slike/linear_algebra_pravci.png}
@@ -234,6 +267,35 @@
 	$\vec{v}_1\cdot \vec{v}_2$ je \textit{projekcija}$\vec{v}_1$ na $\vec{v}_2$!
 \end{frame}
 
+\begin{frame}{Ravnina}
+	Jednadžba:
+	\begin{align*}
+	Ax + By + Cz + D = 0
+	\end{align*}
+	Ovdje su $A$, $B$ i $C$ komponente normale, a $D = \mathbf{n}\cdot \mathbf{p}$, gdje je $\mathbf{p}$ točka na ravnini.\\
+	Kako znamo leži li točka $\mathbf{q}$ na ravnini? \\
+	\begin{align*}
+	 \mathbf{n} \cdot (\mathbf{q} - \mathbf{p}) = 0
+	\end{align*}	
+	\begin{center}
+		\includegraphics[height=3cm]{./slike/ravnina_01_01.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Ravnina, još}
+	\begin{center}
+		\includegraphics[height=4cm]{./slike/ravnina_01_02.png}
+	\end{center}
+	Normala ako znamo tri točke na ravnini:
+	\begin{align*}
+		\mathbf{n} = (\mathbf{b} - \mathbf{a}) \times (\mathbf{c} - \mathbf{a})
+	\end{align*}
+	Kako znamo leži li točka $\mathbf{q}$ na ravnini? \\
+	\begin{align*}
+	 (\mathbf{b} - \mathbf{a}) \times (\mathbf{c} - \mathbf{a}) \cdot (\mathbf{q} - \mathbf{a}) = 0
+	\end{align*}	
+	
+\end{frame}
 \begin{frame}{Udaljenost točke i ravnine}
 	Ravnina je zadana točkom $O$ i normalom $\vec{n}$.
 	\begin{center}
@@ -386,7 +448,7 @@
 	\end{align*}
 \end{frame}	
 
-\begin{frame}{Sjecište zrake i ravnine, contd.}
+\begin{frame}{Sjecište pravca i ravnine, contd.}
 	Još jednostavnije:
 	\begin{align*}
 	\textbf{A}
@@ -401,19 +463,162 @@
 	\end{array} 
 	\right]
 	\end{align*}
-	Zašto $\beta$ i $\gamma$?
+	
 \end{frame}
 
-\begin{frame}{Sjecište zrake i ravnine, contd.}
-	Ravnina je zadana trima točkama $(A, B, C)$, ili pripadajućim vektorima $\mathbf{a}, \mathbf{b}, \mathbf{c}$.\\
-	Svaka točka $\mathbf{P}$ na ravnini se može zapisati kao  $\mathbf{P}(\alpha, \beta, \gamma) = \alpha\mathbf{a} + \beta\mathbf{b}+\gamma\mathbf{c}$, gdje je $\alpha + \beta +\gamma =1$
-%	\begin{center}
-%		\includegraphics[width=5cm]{slike/ray_trokut_01.png}
-%	\end{center}
-	Možemo izraziti $\alpha$ i drugačije: $\alpha = 1- \beta - \gamma$ \\
-	$\mathbf{P}(\beta, \gamma) = (1- \beta - \gamma)\mathbf{a} + \beta\mathbf{b}+\gamma\mathbf{c} = \mathbf{a} + \beta(\mathbf{b}-\mathbf{a}) + \gamma(\mathbf{c}-\mathbf{a})$\\
-	Dakle, izračunamo $t$, $\beta$ i $\gamma$ (pogledati slajdove iznad), onda dobijemo $\alpha$. \\
-	Ako vrijedi $\alpha + \beta +\gamma =1$, onda je točka na ravnini.
+\begin{frame}{Sjecište pravca i ravnine, contd.}
+	\begin{itemize}
+		\item Ravnina je zadana trima točkama pripadajućim vektorima $\mathbf{a}, \mathbf{b}, \mathbf{c}$.
+		\item Svaka točka $\mathbf{p}$ na ravnini se može zapisati kao  $\mathbf{p}(\alpha, \beta, \gamma) = \alpha\mathbf{a} + \beta\mathbf{b}+\gamma\mathbf{c}$, gdje je $\alpha + \beta +\gamma =1$
+		\begin{itemize}
+			\item Možemo izraziti $\alpha$ i ovako: $\alpha = 1- \beta - \gamma$
+		\end{itemize}
+	\end{itemize}
+
+	Ovo smo već vidjeli:
+	\begin{align*}
+	\mathbf{P}(\beta, \gamma) & = (1- \beta - \gamma)\mathbf{a} + \beta\mathbf{b}+\gamma\mathbf{c} \\
+	                          & = \mathbf{a} + \beta(\mathbf{b}-\mathbf{a}) + \gamma(\mathbf{c}-\mathbf{a})
+	\end{align*}	
+	
+	Zaključno, izračunamo $t$, $\beta$ i $\gamma$, čime smo dobili točku na ravnini $\mathbf{p}$.\\
+	Ili, za zadanu točku $\mathbf{p}$:
+	\begin{itemize}
+		\item Izračunati $\alpha$, $\beta$ i $\gamma$
+		\item Ako vrijedi $\alpha + \beta +\gamma =1$, onda je točka na ravnini.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sjecište pravca i trokuta}
+	\begin{center}
+		\includegraphics[height=4cm]{./slike/sjeciste_trokut_pravac.png}
+	\end{center}
+Osim $\alpha + \beta +\gamma =1$, dodajemo još tri uvjeta $0 \leq \alpha \leq 1$, $0 \leq \beta \leq 1$, $0 \leq \gamma \leq 1$.\\
+Primjer: 
+\begin{itemize}
+	\item ako je $\alpha=0$, $\textbf{P}$ je na dužini $\textbf{b} - \textbf{c}$
+	\item ako je $\alpha=\beta=0$, $\textbf{P} = \textbf{c}$
+\end{itemize}
+
+.
+\end{frame}
+
+\begin{frame}{Sjecište pravca i trokuta}
+	Jednadžba koji treba riješiti:
+	\begin{align*}
+		\textbf{p}(\beta, \gamma) = \textbf{a} + \beta(\textbf{b}-\textbf{a}) + \gamma(\textbf{c}-\textbf{a})
+	\end{align*}
+	Kako vrijedi $\alpha = 1- \beta - \gamma$, kako izračunati $\alpha, \beta, \gamma, t$? \\
+	Ako je zadan pravac sa: $\textbf{p}(t) = \textbf{e}+t\textbf{D}$, onda je jednadžba koju treba riješti:
+	$$\textbf{e}+t\textbf{D} = \textbf{a} + \beta(\textbf{b}-\textbf{a}) + \gamma(\textbf{c}-\textbf{a})$$
+	\begin{itemize}
+		\item Dobije se $t$, $\beta$ i $\gamma$
+		\item Izračuna se $\alpha$
+		\item Ako vrijedi: $0 \leq \alpha \leq 1$, $0 \leq \beta \leq 1$, $0 \leq \gamma \leq 1$.
+		\begin{itemize}
+			\item Točka se nalazi unutar trokuta.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Podaci i struktura}
+\begin{frame}{Uvod}
+	\begin{itemize}
+		\item Izazov predstavlja vizualizacija  kontinuiranih podataka (npr. boje) iz \textit{rijetkih} diskretnih podataka. 
+		\item Potrebno je tada interpolirati vrijednosti između rijetkih podataka poštujući \textbf{topološke} strukture.
+		\item Ovdje \textbf{topologija} podrazumijeva određivanje relacija (veza ili odnosa) između podataka  koji su neovisni o geometrijskim transformacijama.
+	\end{itemize}
+
+\begin{center}
+	\includegraphics[height=3cm]{slike/wireframe_kocke.png}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Interpolacija}
+	\begin{itemize}
+		\item Interpolacije se temelje na topološkim strukturama
+		\item Vidjeti utjecaj točke $c_{4}$ na blisku okolinu točke $c_{2}$.
+		\item Zaključno, iako su podaci nepromijenjeni, promjenom topološke strukture utječemo na interpolaciju, što na koncu može rezultirati drukčijim rezultatom interpolacije
+	\end{itemize}
+	\begin{center}
+		\includegraphics[height=4cm]{slike/interp_quad_no_formula.png}
+		\includegraphics[height=4cm]{slike/interp_quad_tri_no_formula.png}
+	\end{center}
+\end{frame}
+\begin{frame}{Struktura}
+	
+	\begin{block}{}
+		Objekt koji predstavlja podatke se sastoji od svoje \textbf{strukture}, u što spadaju topološke i geometrijske karakteristike, i \textbf{atributa}, a obično nosi naziv \textbf{dataset} ili \textbf{data object} . Može se zaključiti da \textbf{dataset} daje prostorno značenje atributima.
+	\end{block}
+
+		\begin{center}
+			\begin{tabular}{cc}\hline
+				\textbf{Struktura}   &\\
+				Topologija, geometrija & Ćelije, točke u mreži\\\hline
+				\textbf{Atributi} & Skalari, vektori\\
+				Podaci & Normale, koo. tekstura, tenzori \\\hline
+			\end{tabular}
+		\end{center}
+
+\end{frame}
+
+\begin{frame}{Struktura}
+Struktura se sastoji od dva dijela:
+\begin{itemize}
+	\item Topološka struktura, topologija:
+	\begin{itemize}
+		\item  Relacije(veze, odnosi) između podataka koje su neovisne o geometrijskim transformacijama 
+		\item  Određena interpolacija potrebna za vizualizaciju 
+	\end{itemize}
+	\item Geometrija:
+	\begin{itemize}
+		\item prikaz(instanca) topologije
+		\item položaj točaka u prostoru
+	\end{itemize}
+\end{itemize}
+\textbf{Točke} definiraju geometriju, odnosno mjesto gdje se nalaze podaci, dok \textbf{ćelije} definiraju topološku strukturu točaka.
+\end{frame}
+
+\begin{frame}{Ćelije}
+	Ćelije su osnovni element vizualizacije, a definirane su topološkom dimenzijom, odnosno vrstom ćelije (trokut, četverokut, verteks, tetraedar, heksaedar, itd.) i listom točaka, tzv. \textit{connectivity list}.
+	Možemo napisati i formalniju definiciju liste točaka neke ćelije: 
+	\begin{align*}
+	C_{i} = \{ p_{1}, p_{2}, \ldots p_{n} \},
+	\end{align*}
+	gdje je 
+	\begin{itemize}
+		\item $ C_{i} $ oznaka ćelija
+		\item $p_{i}$ indeks točke definirane u skupu točaka $P$, tj. $p_{i}\in P$.
+	\end{itemize}
+	Ovdje $P$ predstavlja skup $N_d$-dimenzionalnih točaka ($N_d=3$). Svaki različiti tip ćelije određuje listu točaka definiranu njihovim brojem $n$.
+	
+	Želimo li saznati \textit{koristi} li određena ćelija $C_{i}$ točku $p_{i}$, mora vrijediti 
+	$p_{i} \in C_{i}$. Trebamo li pak odrediti sve ćelije koje \textit{koriste} točku $p_{i}$, može se definirati skup svih ćelija koje koriste točku $p_{i}$, $U(p_{i})$, za kojeg vrijedi:+
+	\begin{align*}
+	U(p_{i}) = \{ C_{i}:p_{i} \in C_{i}\}.
+	\end{align*}	
+	$U(p_{i})$ se još naziva \textit{use set} točke $p_i$.
+\end{frame}
+
+\begin{frame}{Atributi}
+	Informacije pridružene podacima se još nazivaju i \textbf{atributima}.
+	Mogu se pridružiti točkama i/ili ćelijama, a čine skup sljedećih podataka:
+	\begin{itemize}
+		\item skalar,
+		\item vektor,
+		\item normala,
+		\item tekstura i 
+		\item tenzor.
+	\end{itemize}
+	Kao primjer navedimo točku kojoj su pridruženi sljedeći podaci:
+	\begin{itemize}
+		\item boja,
+		\item koordinata teksture,
+		\item normala,
+		\item vektor usmjeren prema izvoru svjetla,
+	\end{itemize}
+	Ovisno o namjeni, svakoj točki može biti pridruženo po volji mnogo atributa, a u nekim slučajevima ih može biti i više od stotinu.
 \end{frame}
 \plain{Pitanja?}
 \end{document}
