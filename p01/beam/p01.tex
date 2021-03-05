@@ -209,7 +209,7 @@
 
 \begin{frame}{Pravac}
 	\begin{center}
-		\includegraphics[height=2cm]{./slike/linear_algebra_pravci.png}
+		\includegraphics[height=3cm]{./slike/linear_algebra_pravci.png}
 	\end{center}
 	\begin{align*}
 		P = (E-S)\lambda + S = \vec{v}\lambda + S
@@ -233,11 +233,187 @@
 	\end{center}
 	$\vec{v}_1\cdot \vec{v}_2$ je \textit{projekcija}$\vec{v}_1$ na $\vec{v}_2$!
 \end{frame}
-\begin{frame}{Literatura}
+
+\begin{frame}{Udaljenost točke i ravnine}
+	Ravnina je zadana točkom $O$ i normalom $\vec{n}$.
+	\begin{center}
+		\includegraphics[height=6cm]{./slike/linear_algebra_plane_point_distance.png}
+	\end{center}
+\end{frame}
+
+\section{Baricentrične koordinate}
+\begin{frame}{Tri točke}
+	\begin{center}
+		\includegraphics[height=4cm]{./slike/2d_trokut.png}
+	\end{center}
 	\begin{itemize}
-		\item Čupić M. i Mihajolović Ž. ; \textit{Interaktivna računalna grafika kroz primjere u OpenGL-u}
-		\item Marschner S., Shirley P.; \textit{Fundamentals of Computer Graphics}, 4. izdanje, 2016
+		\item Trokut je definiran točkama $\mathbf{a}$, $\mathbf{b}$ i $\mathbf{c}$
+		\item Definira se koordinatni sustav s baznim vektorima $\mathbf{b} - \mathbf{a}$ i $\mathbf{c} - \mathbf{a}$
+		\item Točka se može definirati u tom sustavu s koordinatama (uređeni par) $(\beta, \gamma)$.
+		\item Primjer: $\mathbf{p} = (2, 0.5) \rightarrow \mathbf{p} = \mathbf{a} + 2(\mathbf{b} - \mathbf{a}) + 0.5(\mathbf{c} - \mathbf{a}) $
 	\end{itemize}
+	
+\end{frame}
+\begin{frame}{Tri točke i trokut, contd.}
+	Svaka točka se može definirati kao 
+	\begin{align*}
+	\mathbf{p} = \mathbf{a} + \beta(\mathbf{b} - \mathbf{a}) + \gamma(\mathbf{c} - \mathbf{a})
+	\end{align*}
+	Uredimo li malo ovaj izraz:
+	\begin{align*}
+	\mathbf{p} = (1- \beta - \gamma)\mathbf{a} + \beta\mathbf{b} + \gamma\mathbf{c}
+	\end{align*}
+	Uvedemo li $\alpha = 1- \beta - \gamma$:
+	\begin{align*}
+	\mathbf{p} = \alpha\mathbf{a} + \beta\mathbf{b} + \gamma\mathbf{c}
+	\end{align*}
+	Točka $\mathbf{p}$ se nalazi unutar trokuta ako vrijedi:
+	\begin{align*}
+	0 \leq \alpha \leq 1 \\
+	0 \leq \beta \leq 1 \\
+	0 \leq \gamma \leq 1 \\
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Trokut}
+	Obrnuto: Za zadanu točku  $\mathbf{p}$, koliki su $\alpha$, $\beta$ i  $\gamma$?
+	\begin{center}
+		\includegraphics[height=3cm]{./slike/2d_trokut_01.png}
+	\end{center}
+	Površina trokuta: 
+	\begin{align*}
+	A = \frac{1}{2}\lVert (\mathbf{b} - \mathbf{a}) \times (\mathbf{c} - \mathbf{a})\rVert
+	\end{align*}
+	Također vrijedi: $A = A_a + A_b + A_c$ \\
+	
+	\begin{block}{Nezgodno}
+		Površina trokuta nema predznak, čime se onda \textbf{ne mogu} odrediti $\alpha$, $\beta$ i  $\gamma$
+	\end{block}
+\end{frame}
+
+\begin{frame}{Trokut, contd.}
+	\begin{center}
+		\includegraphics[height=3cm]{./slike/2d_trokut_02.png}
+	\end{center}
+\begin{columns}[t]
+	\begin{column}{0.45 \textwidth}
+		Možemo odrediti normale:
+		\begin{align*}
+		\mathbf{n} & = (\mathbf{b} - \mathbf{a}) \times (\mathbf{c} - \mathbf{a}) \\
+		\mathbf{n}_a & = (\mathbf{c} - \mathbf{b}) \times (\mathbf{p} - \mathbf{b}) \\
+		\mathbf{n}_b & = (\mathbf{a} - \mathbf{c}) \times (\mathbf{p} - \mathbf{c}) \\
+		\mathbf{n}_c & = (\mathbf{b} - \mathbf{a}) \times (\mathbf{p} - \mathbf{a})
+		\end{align*}
+	\end{column}
+\begin{column}{0.45 \textwidth}
+	Sada je lako:
+	\begin{align*}
+		\alpha & = \frac{\mathbf{n} \cdot \mathbf{n}_a}{\lVert \mathbf{n} \rVert ^2} \\
+		\beta & = \frac{\mathbf{n} \cdot \mathbf{n}_b}{\lVert \mathbf{n} \rVert ^2} \\
+		\gamma & = \frac{\mathbf{n} \cdot \mathbf{n}_c}{\lVert \mathbf{n} \rVert ^2}
+	\end{align*}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Sjecišta}
+\begin{frame}{Sjecište pravca i ravnine}
+	\begin{center}
+		\includegraphics[height=4cm]{./slike/sjeciste_ravnina_pravac_01.png}
+	\end{center}
+	Pravac: $\textbf{p}(t) = \textbf{e}+t\textbf{D}$
+	\\Ravnina: točka na ravnini: $\textbf{p}_0 = (x_0, y_0, z_0)$, normala: $\textbf{n}$
+	\\Ako je točka na ravnini:\\
+	$(\textbf{p} - \textbf{p}_0)\textbf{n}=0$
+	ili:
+	$(\textbf{e} +t\textbf{D}- \textbf{p}_0)\textbf{n}=0$
+	\\Rješenje: 
+	\begin{align*}
+	t = \frac{(\textbf{p}_0-\textbf{e})\cdot\textbf{n}}{\textbf{D}\cdot\textbf{n}}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Sjecište zrake i ravnine, contd.}
+	Može i drukčije: Ako definiramo tri točke na ravnini, $\mathbf{a}, \mathbf{b}, \mathbf{c}$ 
+	\begin{center}
+		\includegraphics[height=4cm]{./slike/sjeciste_ravnina_pravac_02.png}
+	\end{center}
+	Točka na ravnini je zadana sa 
+	$\textbf{p}(\beta, \gamma) = \textbf{a} + \beta(\textbf{b}-\textbf{a}) + \gamma(\textbf{c}-\textbf{a})$
+\end{frame}	
+
+\begin{frame}{Sjecište zrake i ravnine, contd.}
+	$\textbf{p}(\beta, \gamma) = \textbf{a} + \beta(\textbf{b}-\textbf{a}) + \gamma(\textbf{c}-\textbf{a})$ 
+	\\
+	Ako je zadana zraka sa: $\textbf{p}(t) = \textbf{e}+t\textbf{D}$
+	$$\textbf{e}+t\textbf{D} = \textbf{a} + \beta(\textbf{b}-\textbf{a}) + \gamma(\textbf{c}-\textbf{a})$$
+	Dobije se sustav jednadžbi:
+	\begin{align*}
+	x_e+tx_D = x_a + \beta(x_b-x_a) + \gamma(x_c-x_a)\\
+	y_e+ty_D = y_a + \beta(y_b-y_a) + \gamma(y_c-y_a)\\
+	z_e+tz_D = z_a + \beta(z_b-z_a) + \gamma(z_c-z_a)
+	\end{align*}
+	Nepoznanice su $t$, $\beta$ i $\gamma$
+\end{frame}	
+
+\begin{frame}{Sjecište zrake i ravnine, contd.}
+	Nakon sređivanja prethodnog izraza:
+	\begin{align*}
+	(x_a-x_b)\beta + (x_a-x_c)\gamma + x_Dt=x_a-x_e\\
+	(y_a-y_b)\beta + (ya-y_c)\gamma + y_Dt=y_a-y_e\\
+	(z_a-z_b)\beta + (za-z_c)\gamma + z_Dt=z_a-z_e
+	\end{align*}
+	Odnosno:
+	
+	\begin{align*}
+	\left[
+	\begin{array}{ccc}
+	x_a-x_b&  x_a-x_c&  x_D \\ 
+	y_a-y_b&  y_a-y_c&  y_D  \\ 
+	z_a-z_b&  z_a-z_c&  z_D
+	\end{array} 
+	\right]
+	\left[
+	\begin{array}{c}
+	\beta \\ \gamma \\ t
+	\end{array} 
+	\right] =
+	\left[
+	\begin{array}{c}
+	x_a-x_e \\ y_a-y_e \\ z_a-z_e
+	\end{array} 
+	\right]
+	\end{align*}
+\end{frame}	
+
+\begin{frame}{Sjecište zrake i ravnine, contd.}
+	Još jednostavnije:
+	\begin{align*}
+	\textbf{A}
+	\left[
+	\begin{array}{c}
+	\beta \\ \gamma \\ t
+	\end{array} 
+	\right] =
+	\left[
+	\begin{array}{c}
+	x_a-x_e \\ y_a-y_e \\ z_a-z_e
+	\end{array} 
+	\right]
+	\end{align*}
+	Zašto $\beta$ i $\gamma$?
+\end{frame}
+
+\begin{frame}{Sjecište zrake i ravnine, contd.}
+	Ravnina je zadana trima točkama $(A, B, C)$, ili pripadajućim vektorima $\mathbf{a}, \mathbf{b}, \mathbf{c}$.\\
+	Svaka točka $\mathbf{P}$ na ravnini se može zapisati kao  $\mathbf{P}(\alpha, \beta, \gamma) = \alpha\mathbf{a} + \beta\mathbf{b}+\gamma\mathbf{c}$, gdje je $\alpha + \beta +\gamma =1$
+%	\begin{center}
+%		\includegraphics[width=5cm]{slike/ray_trokut_01.png}
+%	\end{center}
+	Možemo izraziti $\alpha$ i drugačije: $\alpha = 1- \beta - \gamma$ \\
+	$\mathbf{P}(\beta, \gamma) = (1- \beta - \gamma)\mathbf{a} + \beta\mathbf{b}+\gamma\mathbf{c} = \mathbf{a} + \beta(\mathbf{b}-\mathbf{a}) + \gamma(\mathbf{c}-\mathbf{a})$\\
+	Dakle, izračunamo $t$, $\beta$ i $\gamma$ (pogledati slajdove iznad), onda dobijemo $\alpha$. \\
+	Ako vrijedi $\alpha + \beta +\gamma =1$, onda je točka na ravnini.
 \end{frame}
 \plain{Pitanja?}
 \end{document}
