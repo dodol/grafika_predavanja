@@ -1,0 +1,84 @@
+
+\documentclass[9pt]{beamer}
+\input{../../config/config.tex}
+%\documentclass[ucs]{beamer}
+%\usetheme[menuwidth={0.3\paperwidth}]{erlangen}
+%\setbeamercovered{transparent=20} 
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{mathtools}
+
+\definecolor{erlangenlyellow}{RGB}{123, 25, 121}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{default}
+%\usepackage[T1]{fontenc}
+
+\usepackage{verbatim}
+\usepackage{listings}
+
+
+\usepackage{subcaption}
+\usepackage{lmodern}
+
+\title{Transformacije}
+
+\subtitle{ I might find balance $\ldots$ But I won't}
+\institute{Računalna grafika}
+
+
+\begin{document}
+\begin{frame}
+ \titlepage
+\end{frame}
+
+%\begin{frame}{Sadržaj}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+\section{Točka i vektor}
+
+\begin{frame}{Točka vs. vektor}
+	\begin{itemize}
+		\item Točka: \textit{položaj}, ili \textit{pozicija}
+		\item Vektor: usmjerena \textit{dužina}. Sastoji se od \textit{smjera} i \textit{duljine} 
+		\item isti oblik $\begin{pmatrix} x & y & z\end{pmatrix}^T$ 
+		\item homogene koordinate:
+		\begin{itemize}
+			\item Točka: $\begin{pmatrix} x & y & z & 1\end{pmatrix}^T$
+			\item Vektor: $\begin{pmatrix} x & y & z & 0\end{pmatrix}^T$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Atributi}
+	Informacije pridružene podacima se još nazivaju i \textbf{atributima}.
+	Mogu se pridružiti točkama i/ili ćelijama, a čine skup sljedećih podataka:
+	\begin{itemize}
+		\item skalar,
+		\item vektor,
+		\item normala,
+		\item tekstura i 
+		\item tenzor.
+	\end{itemize}
+	Kao primjer navedimo točku kojoj su pridruženi sljedeći podaci:
+	\begin{itemize}
+		\item boja,
+		\item koordinata teksture,
+		\item normala,
+		\item vektor usmjeren prema izvoru svjetla,
+	\end{itemize}
+	Ovisno o namjeni, svakoj točki može biti pridruženo po volji mnogo atributa, a u nekim slučajevima ih može biti i više od stotinu.
+\end{frame}
+\plain{Pitanja?}
+\end{document}
