@@ -45,40 +45,992 @@
 %  \tableofcontents
 %  % You might wish to add the option [pausesections]
 %\end{frame}
-\section{Točka i vektor}
+\section{Klasifikacija transformacija}
 
-\begin{frame}{Točka vs. vektor}
+\begin{frame}{Umjesto definicije}
+	Funkcija koja preslikava točku $x$ u $x'$
+	\begin{center}
+		\includegraphics[height=3cm]{slike/tori.png}
+		\includegraphics[height=3cm]{slike/ice_stacked.png}
+	\end{center}
+\end{frame}
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\begin{frame}{Jednostavne transformacije}
+	\begin{figure}
+		\begin{center}
+			\begin{subfigure}[b]{0.35\linewidth}
+				\includegraphics[height=3cm]{slike/funny_cow_template_1.png}
+				\caption{Identitet}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.35\linewidth}
+				\includegraphics[height=3cm]{slike/funny_cow_translate.png}
+				\caption{Translacija}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.35\linewidth}
+				\includegraphics[height=3cm]{slike/funny_cow_rotate.png}
+				\caption{Rotacija}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.35\linewidth}
+				\includegraphics[height=3cm]{slike/funny_cow_scale.png}
+				\caption{Uniformno skaliranje}
+			\end{subfigure}
+		\end{center}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Euklidske transformacije}
+	Ili transformacije krutog tijela.
 	\begin{itemize}
-		\item Točka: \textit{položaj}, ili \textit{pozicija}
-		\item Vektor: usmjerena \textit{dužina}. Sastoji se od \textit{smjera} i \textit{duljine} 
-		\item isti oblik $\begin{pmatrix} x & y & z\end{pmatrix}^T$ 
-		\item homogene koordinate:
-		\begin{itemize}
-			\item Točka: $\begin{pmatrix} x & y & z & 1\end{pmatrix}^T$
-			\item Vektor: $\begin{pmatrix} x & y & z & 0\end{pmatrix}^T$
-		\end{itemize}
+		\item Očuvane udaljenosti
+		\item Očuvani kutevi
+	\end{itemize}
+	\begin{figure}
+		\begin{subfigure}[b]{0.35\linewidth}
+			\includegraphics[height=3cm]{slike/funny_cow_translate.png}
+			\caption{Translacija}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.35\linewidth}
+			\includegraphics[height=3cm]{slike/funny_cow_rotate.png}
+			\caption{Rotacija}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Sličnost}
+	Ovdje spada sve prije + izotropno skaliranje
+	\begin{itemize}
+		\item Očuvani kutevi
+		\item Oblik je isti, ali s različitom skalom, orijentacijom i pozicijom
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Linearne transformacije}
+	\begin{figure}
+		\begin{center}
+			\begin{subfigure}[b]{0.3\linewidth}
+				\includegraphics[height=1.8cm]{slike/funny_cow_scale_2.png}
+				\caption{Skaliranje}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.3\linewidth}
+				\includegraphics[height=1.8cm]{slike/funny_cow_mirror.png}
+				\caption{Zrcaljenje}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.3\linewidth}
+				\includegraphics[height=1.8cm]{slike/funny_cow_shear.png}
+				\caption{Smik}
+			\end{subfigure}
+		\end{center}
+	\end{figure}
+	Grafička interpretacija: transformacija točaka oko (u odnosu na) ishodišta.\\
+	Pod linearne transformacije spada sve navedeno osim translacije, odnosno vrijedi:
+	\begin{itemize}
+		\item $f(\mathbf{p}+\mathbf{q}) = f(\mathbf{p}) + f(\mathbf{q})$
+		\item $f(a\mathbf{q}) = af(\mathbf{p})$
 	\end{itemize}
 \end{frame}
 
 
-\begin{frame}{Atributi}
-	Informacije pridružene podacima se još nazivaju i \textbf{atributima}.
-	Mogu se pridružiti točkama i/ili ćelijama, a čine skup sljedećih podataka:
+\begin{frame}{Linearne transformacije contd.}
+	\begin{Large}
+		\textbf{Translacija NIJE linearna!}
+	\end{Large}
 	\begin{itemize}
-		\item skalar,
-		\item vektor,
-		\item normala,
-		\item tekstura i 
-		\item tenzor.
+		\item $f(p) = p+t$
+		\item $f(ap) = ap+t \neq a(p+t) = af(p)$
+		\item $f(p+q) = p+q+t \neq (p+t)+(q+t) = f(p)+f(q)$
 	\end{itemize}
-	Kao primjer navedimo točku kojoj su pridruženi sljedeći podaci:
+\end{frame}
+
+\begin{frame}{Afine transformacije}
+	Linearne transformacije + translacija.\\
+	Ostaju očuvane paralelne linije
+	\begin{figure}
+		\includegraphics[height=3cm]{slike/funny_cow_complex_transform.png}
+	\end{figure} 
+\end{frame}
+
+\begin{frame}{Perspektivne transformacije}
+	Očuvane su linije
+	\begin{figure}
+		\includegraphics[height=3cm]{slike/funny_cow_perspective.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Transformacije u slici}
+	\begin{figure}
+		\includegraphics[width=10cm]{slike/tansformacije_tipovi.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Posljedica hijerarhije}
+	\begin{block}{Korist}
+		Zatvorenost: Rezultat dvije afine transformacije jest afina transformacija
+	\end{block}
+	Vrijedi za svaku grupu i podgrupu transformacija
+	\begin{block}{Iznimno mudro\ldots}
+			Skup $S$ definiran operacijom\footnote[frame]{binarnom operacijom, da budemo precizniji} $f$ na skupu $S$, gdje je svako preslikavanje element skupa $S$, jest grupa.\\
+			$s,t \in S$, $f(s,t) = u \Rightarrow u \in S$ itd.\\
+			Transformacije su grupe i podgrupe. Odnosno transformacije su $S$, dok je ulančavanje transformacija $f$.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Transformacije su grupe. I?}
+	\textbf{Moguće je prikazati bilo koji broj sukcesivnih transformacija s jednom općom transformacijom}
+\end{frame}
+
+\section{Transformacije i matrice}
+
+\begin{frame}{Linearne transformacije}
 	\begin{itemize}
-		\item boja,
-		\item koordinata teksture,
-		\item normala,
-		\item vektor usmjeren prema izvoru svjetla,
+		\item Linearne transformacije se obično provode s invertibilnim matricama% \footnote[frame]{hey candy cane brain pouring like the rain}
+		\item 2D transformacija : 
 	\end{itemize}
-	Ovisno o namjeni, svakoj točki može biti pridruženo po volji mnogo atributa, a u nekim slučajevima ih može biti i više od stotinu.
+	\begin{align*}
+		\mathbf{T}= \left [ \begin{array}{cc}
+		a & b  \\
+		c & d  \end{array} \right]
+	\end{align*}
+	\begin{itemize}
+		\item Transformacija vektora $\mathbf{x}$
+	\end{itemize}
+	\begin{align*}
+		\left[ \begin{array}{c} x_{1} \\ x_{2}  \end{array} \right] \rightarrow 
+		\left[ \begin{array}{cc}
+		a & b  \\
+		c & d  \end{array} \right] 	\left[ \begin{array}{c} x_{1} \\ x_{2}    \end{array} \right] = 
+		\left[ \begin{array}{c}
+		ax_{1} + bx_{2}  \\
+		cx_{1} + dx_{2}  \end{array} \right]\nonumber
+		\end{align*}
+\end{frame}
+
+\begin{frame}{Linearne transformacije}
+	\begin{center}
+		\includegraphics[height=2cm]{slike/basis_vector.png}
+	\end{center}
+	
+		\begin{align*}
+		\mathbf{e}_{1} = \left[ \begin{array}{c} 1 \\ 0  \end{array} \right]\ 
+		\mathbf{e}_{2} = \left[ \begin{array}{c} 0 \\ 1  \end{array} \right]
+		\nonumber
+		\end{align*}
+	
+		\begin{align*}
+		T \left[ \begin{array}{c} 1 \\ 0  \end{array} \right]\ =
+		\left[ \begin{array}{cc}
+		a & b  \\
+		c & d  \end{array} \right] \left[ \begin{array}{c} 1 \\ 0  \end{array} \right] = 
+		\left[ \begin{array}{c} a \\ c  \end{array} \right] \Rightarrow
+		\mathbf{T}_{1}(\mathbf{e}_{1}) = \left[ \begin{array}{c} a \\ c  \end{array} \right]
+		\nonumber
+		\end{align*}
+		\begin{align*}
+		T \left[ \begin{array}{c} 0 \\ 1  \end{array} \right]\ =
+		\left[ \begin{array}{cc}
+		a & b  \\
+		c & d  \end{array} \right] \left[ \begin{array}{c} 0 \\ 1  \end{array} \right] = 
+		\left[ \begin{array}{c} b \\ d  \end{array} \right] \Rightarrow
+		\mathbf{T}_{2}(\mathbf{e}_{2}) = \left[ \begin{array}{c} b \\ d  \end{array} \right]
+		\nonumber
+		\end{align*}
+	
+\end{frame}
+\begin{frame}{Linearne transformacije  - Rotacija}
+	\begin{center}
+		\includegraphics[height=1.5cm]{slike/funny_cow_rotate.png} \\
+		\includegraphics[height=1.5cm]{slike/basis_vector_rotation.png}
+	\end{center}
+	\onslide<1->{Rotacija za kut $\theta$ oko ishodišta - $\mathbf{v}' = \mathbf{R}\mathbf{v}$}
+	\onslide<2->{
+		\begin{align*}
+		e_{1} \left[ \begin{array}{c} 1 \\ 0  \end{array} \right] \Rightarrow
+		\left[ \begin{array}{c} \cos\theta \\ \sin \theta  \end{array} \right]
+		\qquad\qquad
+		e_{2} \left[ \begin{array}{c} 0 \\ 1  \end{array} \right] \Rightarrow
+		\left[ \begin{array}{c} -\sin\theta \\ \cos\theta  \end{array} \right]  
+		\end{align*}
+
+	}
+	\onslide<3->{
+		\begin{align*}
+		\mathbf{R} =  \left[ \begin{array}{cc} \mathrm{cos}\theta & -\sin\theta \\ 
+		\sin\theta & \cos\theta  \end{array} \right]
+		\nonumber
+		\end{align*}}
+\end{frame}
+
+\begin{frame}{Linearne transformacije  - Rotacija contd.}
+	\begin{center}
+		\includegraphics[height=1.5cm]{slike/funny_cow_rotate.png}
+	\end{center}
+	\onslide<1->{
+		\begin{align*}
+		\mathbf{R} \mathbf{v}=  \left[ \begin{array}{cc} \cos\theta & -\sin\theta \\ 
+		\sin\theta & \cos\theta  \end{array} \right] 
+		\left[ \begin{array}{c} x \\ y  \end{array} \right] = 
+		\left[ \begin{array}{c} x \cos\theta - y  \sin\theta\\ 
+		x \sin\theta + y  \cos\theta  \end{array} \right]
+		\end{align*}}
+	\onslide<2->{Rotacija UVIJEK oko ishodišta}
+	\onslide<3->{\begin{block}{Linearne tranformacije, podsjetnik}
+			Linearne transformacije uključuju rotaciju, skaliranje, zrcaljenje i smik.
+			Ishodište je fiksno
+		\end{block}
+	}
+\end{frame}
+
+\begin{frame}{Linearne transformacije  - Skaliranje}
+	\onslide<1->{$$s_{x} =3, s_{y} = 2$$}
+	\onslide<2->{
+		\begin{equation}
+		\mathbf{s} =  \left[ \begin{array}{c} s_{x} \\ s_{y}  \end{array} \right]
+		\nonumber
+		\end{equation}}
+	\onslide<2->{$$\mathbf{v}' = \mathbf{s}\mathbf{v}$$}
+	\onslide<3->{
+		\begin{equation}
+		e_{1} \left[ \begin{array}{c} 1 \\ 0  \end{array} \right] \Rightarrow
+		s_{x}e_{1} = \left[ \begin{array}{c} s_{x} \\ 0  \end{array} \right] 
+		\nonumber
+		\end{equation}
+	}
+	\onslide<4->{
+		\begin{equation}
+		e_{2} \left[ \begin{array}{c} 0 \\ 1  \end{array} \right] \Rightarrow
+		s_{y}e_{2} = \left[ \begin{array}{c} 0 \\ s_{y}  \end{array} \right] 
+		\nonumber
+		\end{equation}
+	}
+	\onslide<5->{
+		\begin{equation}
+		\mathbf{S} =  \left[ \begin{array}{cc} s_{x} & 0 \\ 0 & s_{y}  \end{array} \right] \Rightarrow
+		\mathbf{S}\mathbf{v} = \left[ \begin{array}{cc} s_{x} & 0 \\ 0 & s_{y}  \end{array} \right]
+		\left[ \begin{array}{c} x \\ y  \end{array} \right] = 
+		\left[ \begin{array}{c} s_{x}x \\ s_{y}y  \end{array} \right] 
+		\nonumber
+		\end{equation}}
+\end{frame}
+
+\begin{frame}{Zrcaljenje}
+	\begin{center}
+		\includegraphics[height=1.cm]{slike/funny_cow_mirror.png}
+	\end{center}
+	Oko $y$ osi:
+	\begin{equation}
+	\mathbf{M}\mathbf{v} = \left[ \begin{array}{cc} -1 & 0 \\ 
+	0 & 1  \end{array} \right] 
+	\left[ \begin{array}{c} x \\ y  \end{array} \right] = 
+	\left[ \begin{array}{c} -x  \\ 
+	y  \end{array} \right]
+	\nonumber
+	\end{equation}
+	
+	Oko $x$ osi:
+	\begin{equation}
+	\mathbf{M}\mathbf{v} = \left[ \begin{array}{cc} 1 & 0 \\ 
+	0 & -1  \end{array} \right] 
+	\left[ \begin{array}{c} x \\ y  \end{array} \right] = 
+	\left[ \begin{array}{c} x  \\ 
+	-y  \end{array} \right]
+	\nonumber
+	\end{equation}
+	
+\end{frame}
+
+\begin{frame}{Intermezzo}
+	\begin{block}{Blago zanimljivo}
+		Matrica rotacije i zrcaljenja je ortogonalna 
+	\end{block}
+	\begin{block}{Ortogonalna matrica}
+		$$\mathbf{M}^{-1} = \mathbf{M}^T$$
+	\end{block}
+	\begin{block}{Zanimljiva svojstva}
+		Ortogonalna matrica $\mathbf{M}$ će očuvati duljinu, odnosno:
+		$$||\mathbf{M}\mathbf{P}|| = ||\mathbf{P}||$$
+		Također, očuvat će i kuteve:
+		$$(\mathbf{M}\mathbf{P}_1) (\mathbf{M}\mathbf{P}_2)= \mathbf{P}_1\mathbf{P}_2$$
+	\end{block}
+\end{frame}
+
+\begin{frame}{Afine transformacije}
+	\begin{eqnarray}\nonumber
+	x' = ax+by + c \\
+	y' = dx+ey + f\nonumber
+	\end{eqnarray}
+	\begin{equation}
+	\left[ \begin{array}{c} x' \\ y'  \end{array} \right] = 
+	\left[ \begin{array}{cc}
+	a & b  \\
+	d & e  \end{array} \right] 	\left[ \begin{array}{c} x \\ y  \end{array} \right] + 
+	\left[ \begin{array}{c} c \\ f  \end{array} \right]\nonumber
+	\end{equation}
+	\begin{equation}
+	p = \mathbf{T} p +t \nonumber
+	\end{equation}
+	\begin{block}{Afine transformacije, podsjetnik}
+		Afine transformacije uključuju sve linearne transformacije i translaciju.
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}{Problem?}
+	\begin{eqnarray}\nonumber
+	x' = ax+by + c \\
+	y' = dx+ey + f\nonumber
+	\end{eqnarray}
+	\begin{equation}
+	\left[ \begin{array}{c} x' \\ y'  \end{array} \right] = 
+	\left[ \begin{array}{cc}
+	a & b  \\
+	d & e  \end{array} \right] 	\left[ \begin{array}{c} x \\ y  \end{array} \right] + 
+	\left[ \begin{array}{c} c \\ f  \end{array} \right]\nonumber
+	\end{equation}
+	\begin{equation}
+	p = \mathbf{T} p \mathbf{???}\nonumber
+	\end{equation}
+\end{frame}
+\begin{frame}{Trik}
+	\begin{columns}[t]
+		\begin{column}{5cm}
+			\begin{equation}
+			\left[ \begin{array}{c} x' \\ y'  \end{array} \right] = 
+			\left[ \begin{array}{cc}
+			a & b  \\
+			d & e  \end{array} \right] 	\left[ \begin{array}{c} x \\ y  \end{array} \right] + 
+			\left[ \begin{array}{c} c \\ f  \end{array} \right]\nonumber
+			\end{equation}
+			\begin{equation}
+			p = \mathbf{T} p +t \nonumber
+			\end{equation}
+		\end{column}
+		\begin{column}{5cm}
+			\begin{equation}
+			\left[ \begin{array}{c} x' \\ y'\\ 0  \end{array} \right] = 
+			\left[ \begin{array}{ccc}
+			a & b  & c\\
+			d & e  & f \\
+			0 & 0 & 1\end{array} \right] 	\left[ \begin{array}{c} x \\ y  \\ 0\end{array} \right]\nonumber
+			\end{equation}
+			\begin{equation}
+			p = \mathbf{T} p \nonumber
+			\end{equation}
+			Formulacija s homogenom koordinatom
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Točka vs vektor}
+	\begin{block}{Zašto ime homogeno?}
+		Translacija, rotacija i skaliranje točke(pozicije) se provode na isti način.
+	\end{block}
+	Ovisno o kontekstu: ako želimo kodirati točku u prostoru, treća koordinata je $1$, 
+	a ako želimo kodirati smjer (vektor), onda stavimo $0$. Dakle, vektori koji predstavljaju smjer ne bi se smjeli promijeniti kada translatiramo objekt (točku). 
+	\begin{block}{Umjesto zaključka}
+		Točka: $\left[ \begin{array}{ccc} 3 & 2 & 1\end{array}\right]^T$  \quad
+		Vektor: $\left[ \begin{array}{ccc} 3&2&0\end{array}\right]^T$
+	\end{block}
+\end{frame}
+
+\begin{frame}{Ipak je stvar malo kompliciranija}
+	Osim što se homogene koordinate mogu shvatiti kao dobar trik za uniformni(homogeni) način primjene tranformacije, može se upotrijebiti i geometrijska interpretacija
+	\\
+	Jednostavno svakoj 2D točki dodajemo treću koordinatu, $w \neq 0$. Recimo da je to udaljenost od očišta.  Što je $w$ veći točka će se više će se pomaknuti.
+\end{frame}
+
+\begin{frame}{Geometrijska interpretacija, 1d}
+	\[    \left[ \begin{array}{c}
+	x' \\ 1 \end{array} \right]  = \left[ \begin{array}{cc}
+	1 &  c \\
+	0 & 1 
+	\end{array} \right]  \left[ \begin{array}{c}
+	x \\ 1\end{array} \right]\]
+	
+	\begin{center}
+		\includegraphics[width=5cm]{slike/translacija_1d_02.png}
+	\end{center}
+	Crvena linija i ishodište se ne pomiču $\rightarrow$ 2D smik.
+\end{frame}
+
+\begin{frame}{Perspektivna ekvivalentnost}
+	Svi umnošci skalara koji imaju vrijednost $\neq 0 $ se smatraju jednakim
+	\begin{equation}
+	\left[ \begin{array}{c}
+	x \\ y \\ z\\ w\end{array} \right]  = 
+	\left[ \begin{array}{c}
+	ax \\ ay \\ az\\ aw\end{array} \right] = 
+	\left[ \begin{array}{c}
+	x/w \\ y/w \\ z/w\\ 1\end{array} \right] \nonumber
+	\end{equation}
+	za $ a\neq 0 $ i $ w\neq 0 $
+\end{frame}
+
+\begin{frame}{Perspektivna ekvivalentnost - contd}
+	
+	\begin{block}{Perspektiva}
+		Sve 3D točke padaju na istu 2D koordinatu na slici.\\
+		U tom smislu su sve takve 3D točke identične.
+	\end{block}
+	\begin{center}
+		\includegraphics[width=6cm]{slike/homogenekoo_eqv.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{1d primjer}
+	1D točke $(x,w)$: Sve ekvivalentne homogene točke leže na linijama koje prolaze kroz ishodište koordinatnog sustava.
+	\begin{center}
+		\includegraphics[height=4cm]{slike/homogenekoo_1d.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{2d primjer}
+	Potrebno samo podijeliti sa $w$
+	\begin{center}
+		\includegraphics[width=10cm]{slike/homogenekoo_2d.png}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{2d primjer, contd.}
+	\only<1>{Kamera u ishodištu, pogled prema $z$ osi, $90\deg$, \textsl{image plane} na $z=1$}
+	\only<2>{ Projicirana točka u homogenim koordinatama: 
+		$$  p'=\left( \begin{array}{c}
+		x/z \\
+		1 \\
+		1 
+		\end{array} \right)$$}
+	\only<3>{Ekvivalentno: \\$$ p'= \left( \begin{array}{c}
+		x/z \\
+		1 \\
+		1 
+		\end{array} \right) \propto  
+		\left( \begin{array}{c}
+		x \\
+		z \\
+		z 
+		\end{array} \right)$$ }
+	\begin{center}
+		\includegraphics[width=7cm]{slike/perspective_2d.png}
+	\end{center}
+\end{frame}
+\begin{frame}{Zaključno}
+	\begin{itemize}
+		\item Projekcijskim matricama dobijamo 2D projekciju 3D točaka.
+		\item Kako se projicira na $z = 1$ ravninu,nestaje informacija o udaljenostima od očišta
+		\begin{itemize}
+			\item Potrebne udaljenosti za GPU tj. $Z$ međuspremnik, koji daje informaciju što je ispred ili iza čega
+		\end{itemize}
+	\end{itemize}
+	
+	
+	
+\end{frame}
+
+\section{2d transformacije}
+
+\begin{frame}{2d transformacije i homogene koordinate }
+	Transformacije će uvijek preslikavati točke u hiperravninu definiranu sa $w = 1$ na druge točke.
+	Odnosno, transformacije $\mathbf{T}$ preslikavaju točku 
+	$\mathbf{v} = \left[ \begin{array}{c} x \\ y \\ 1 \end{array} \right]$ u točku
+	$\mathbf{v'} = \left[ \begin{array}{c} x' \\ y' \\ 1 \end{array} \right]$
+	
+	Linearne tranformacije koriste matricu oblika:
+	\begin{equation}
+	\mathbf{T} = 
+	\left[ \begin{array}{ccc}
+	a & b & 0\\
+	d & e & 0 \\
+	0 & 0 & 1 \end{array} \right] 
+	\nonumber
+	\end{equation}
+	Afine: 
+	\begin{equation}
+	\mathbf{T} = 
+	\left[ \begin{array}{ccc}
+	a & b & c\\
+	d & e & f \\
+	0 & 0 & 1 \end{array} \right] 
+	\nonumber
+	\end{equation}
+\end{frame}
+
+
+\begin{frame}{Afine transformacije, homogene koordinate, receptura}
+	\begin{itemize}
+		\item Dodaje se jedna dimenzija više
+		\begin{itemize}
+			\item 2D: 3D vektor i 3x3 matrice
+			%			\item 3D: 4D vektor i 4x4 matrice
+			\item Afine transformacije postaju linearne u višoj dimenziji
+		\end{itemize}
+		\item Svaka točka ima dodatnu vrijednost, $w=1$		
+	\end{itemize}
+\end{frame}
+
+
+%\begin{frame}{2d primjer}
+%$w=0$? Točka na beskonačno daleko
+%\begin{center}
+%\includegraphics[height=1cm]{slike/railroad.jpg}
+%\end{center}
+%\begin{center}
+%\includegraphics[width=7cm]{slike/homogenekoo_2d.png}
+%\end{center}
+%\end{frame}
+
+
+
+%\begin{frame}{Translacije i homogene koordinate}
+%	Dodajemo novu dimenziju jer translacija postaje linearna transformacija u višoj dimenziji. \\
+%	Odnosno, translacija se može prikazati matrično
+% \[    \left[ \begin{array}{c}
+%                 x' \\ y' \\ z' \\ 1\end{array} \right]  = \left[ \begin{array}{cccc}
+%                1 & 0 & 0 & t_{x} \\
+%		0 & 1 & 0 & t_{y} \\
+%		0 & 0 & 1 & t_{z} \\
+%		0 & 0 & 0 & 1 
+%         \end{array} \right]  \left[ \begin{array}{c}
+%                          x \\ y \\ z \\ 1\end{array} \right]\]
+%\end{frame}
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\begin{frame}{Translacija}
+	\begin{center}
+		\includegraphics[height=3cm]{slike/2dtranslacija.png}
+	\end{center}
+	Matrica transformacije ima oblik: :
+	\begin{equation}
+	\mathbf{T} = 
+	\left[ \begin{array}{ccc}
+	1 & 0 & dx\\
+	0 & 1 & dy \\
+	0 & 0 & 1 \end{array} \right] 
+	\nonumber
+	\end{equation}
+	odnosno:
+	\begin{equation}
+	\mathbf{Tv} = 
+	\left[ \begin{array}{ccc}
+	1 & 0 & dx\\
+	0 & 1 & dy \\
+	0 & 0 & 1 \end{array} \right] 
+	\left[ \begin{array}{c}
+	x\\
+	y \\
+	1 \end{array} \right] = 
+	\left[ \begin{array}{c}
+	x+dx\\
+	y+dy \\
+	1 \end{array} \right] = \mathbf{v'}
+	\nonumber
+	\end{equation}
+\end{frame}
+
+
+\begin{frame}{Rotacija - oko ishodišta}
+	\begin{center}
+		\includegraphics[height=3.5cm]{slike/2drotacija.png}
+	\end{center}
+	$$ \begin{array}{cc} x' = x \text{cos}(\phi)-y\text{sin}(\phi)  & 
+	y' = x \text{sin}(\phi)+y\text{cos}(\phi) \end{array}$$
+	$$ \left[ \begin{array}{c} x' \\ y' \\ h'  \end{array} \right] = 
+	\left[ \begin{array}{ccc}
+	\text{cos}(\phi) & -\text{sin}(\phi) & 0 \\
+	\text{sin}(\phi) & \text{cos}(\phi) & 0 \\
+	0 & 0 & 1 
+	\end{array} \right]\left[ \begin{array}{c} x \\ y \\ h \end{array} \right] 
+	\rightarrow \mathbf{V'} =  \mathbf{R}\mathbf{V} $$
+	
+\end{frame}
+
+\begin{frame}{Skaliranje}
+	\begin{center}
+		\includegraphics[height=2cm]{slike/2dskaliranje.png}
+	\end{center}
+	$$ \begin{array}{cc} x' = x s_{x}  & 
+	y' = y s_{y} \end{array}$$
+	$$ \left[ \begin{array}{ccc} x' & y' & h'  \end{array} \right] = 
+	\left[ \begin{array}{ccc} x & y & h \end{array} \right] 
+	\left[ \begin{array}{ccc}
+	s_{x} & 0 & 0 \\
+	0 & s_{y} & 0 \\
+	0 & 0 & 1 
+	\end{array} \right] \rightarrow \mathbf{V'} = \mathbf{V} \mathbf{S} $$
+	Negativan $s_{x}$ daje zrcaljenje oko koo. osi $x$, analogno za $s_{y}$
+	\[ \left[ \begin{array}{ccc}
+	s & 0 & 0 \\
+	0 & s & 0 \\
+	0 & 0 & 1 
+	\end{array} \right] = 
+	\left[ \begin{array}{ccc}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1/s 
+	\end{array} \right]\]
+	
+\end{frame}
+
+\begin{frame}{Smik}
+	\begin{center}
+		\includegraphics[height=3.5cm]{slike/2dsmik.png}
+	\end{center}
+	$$ \begin{array}{cc} x' = x+y\text{tan}(\beta)  & 
+	y' = y+x\text{tan}(\alpha) \end{array}$$
+	$$ \left[ \begin{array}{c} x' \\ y' \\ h'  \end{array} \right] = 
+	\left[ \begin{array}{ccc}
+	1 & \text{tan}(\beta) & 0 \\
+	\text{tan}(\alpha) & 1 & 0 \\
+	0 & 0 & 1 
+	\end{array} \right]
+	\left[ \begin{array}{c} x \\ y \\ h \end{array} \right] 
+	$$
+	
+\end{frame}
+
+\begin{frame}{Inverzne transformacije}
+	Traženje inverza matrice:
+	Translacija
+	\[ \left[ \begin{array}{ccc}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	t_{x} & t_{y} & 1 
+	\end{array} \right] ^{-1}  =  \left[ \begin{array}{ccc}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	-t_{x} & -t_{y} & 1 
+	\end{array} \right] \]
+	Skaliranje
+	\[ \left[ \begin{array}{ccc}
+	s_{x} & 0 & 0 \\
+	0 & s_{y} & 0 \\
+	0 & 0 & 1 
+	\end{array} \right]^{1} = 
+	\left[ \begin{array}{ccc}
+	1/s_{x} & 0 & 0 \\
+	0 & 1/s_{y} & 0 \\
+	0 & 0 & 1 
+	\end{array} \right]\]
+\end{frame}
+
+\begin{frame}{Inverzne transformacije contd.}
+	Rotacija
+	\[  \left[ \begin{array}{ccc}
+	\text{cos}(\phi) & \text{sin}(\phi) & 0 \\
+	-\text{sin}(\phi) & \text{cos}(\phi) & 0 \\
+	0 & 0 & 1 
+	\end{array} \right] ^{-1} = 
+	\left[ \begin{array}{ccc}
+	\text{cos}(\phi) & -\text{sin}(\phi) & 0 \\
+	\text{sin}(\phi) & \text{cos}(\phi) & 0 \\
+	0 & 0 & 1 
+	\end{array} \right]\]
+	\begin{block}{Bitno}
+		Inverzna matrica ortogonalne matrice je njena transponirana matrica
+	\end{block}
+\end{frame}
+
+\begin{frame}{Važno}
+	\[ \left[ \begin{array}{ccc} x' & y' & h'  \end{array} \right] = 
+	\left[ \begin{array}{ccc} x & y & h \end{array} \right] 
+	\left[ \begin{array}{ccc}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	t_{x} & t_{y} & 1 
+	\end{array} \right]  \]
+	\[ \left[ \begin{array}{c} x' \\ y' \\ h'  \end{array} \right] =     
+	\left[ \begin{array}{ccc}
+	1 & 0 & t_{x} \\
+	0 & 1 & t_{y} \\
+	0 & 0 & 1 
+	\end{array} \right]
+	\left[ \begin{array}{c} x \\ y \\ h \end{array} \right] 
+	\]
+\end{frame}
+
+\section{3D transformacije}
+\begin{frame}{Translacija}
+	\begin{block}{Translacijska matrica}
+		\[    \mathbf{T}_{T} = \left[ \begin{array}{cccc}
+		1 & 0 & 0 & t_{x} \\
+		0 & 1 & 0 & t_{y} \\
+		0 & 0 & 1 & t_{z} \\
+		0 & 0 & 0 & 1 
+		\end{array} \right] \]
+	\end{block}
+\end{frame}
+\begin{frame}{Translacija}
+	\begin{block}{Primjer}
+		\[    \left[ \begin{array}{c}
+		x' \\ y' \\ z'\\ w'
+		\end{array} \right] =  
+		\left[ \begin{array}{cccc}
+		1 & 0 & 0 & t_{x} \\
+		0 & 1 & 0 & t_{y} \\
+		0 & 0 & 1 & t_{z} \\
+		0 & 0 & 0 & 1 
+		\end{array} \right] \cdotp 
+		\left[ \begin{array}{c}
+		x \\ y \\ z\\ 1
+		\end{array} \right]\]
+		Postavi li se $ w_{h} = 1 $
+		\[	x'= x+t_{x} \]
+		\[	y'= y+t_{y} \]
+		\[	z'= z+t_{z} \]
+	\end{block}
+\end{frame}
+
+\begin{frame}{Skaliranje}
+	\begin{block}{Tranformacijska matrica }
+		\[    \mathbf{T}_{S} = \left[ \begin{array}{cccc}
+		s_{x} & 0 & 0 & 0 \\
+		0 & s_{y} & 0 & 0 \\
+		0 & 0 & s_{z} & 0 \\
+		0 & 0 & 0 & 1 
+		\end{array} \right] \]
+	\end{block}
+\end{frame}
+
+\begin{frame}{Rotacija}
+	\begin{block}{Rotacija oko $x$ osi}
+		\[    \mathbf{T}_{R_{x}} = \left[ \begin{array}{cccc}
+		1 & 0 & 0 & 0 \\
+		0 & \mathtt{cos}\theta & -\mathtt{sin}\theta & 0 \\
+		0 & \mathtt{sin}\theta & \mathtt{cos}\theta & 0 \\
+		0 & 0 & 0 & 1 
+		\end{array} \right] \]
+	\end{block}
+\end{frame}
+
+\begin{frame}{Rotacija contd.}
+	\begin{block}{Rotacija oko $y$ osi}
+		\[    \mathbf{T}_{R_{y}} = \left[ \begin{array}{cccc}
+		\mathtt{cos}\theta & 0 & \mathtt{sin}\theta & 0 \\
+		0 & 1 & 0 & 0 \\
+		-\mathtt{sin}\theta & 0 & \mathtt{cos}\theta & 0 \\
+		0 & 0 & 0 & 1 
+		\end{array} \right] \]
+	\end{block}
+\end{frame}
+
+\begin{frame}{Rotacija contd.}
+	\begin{block}{Rotacija oko $z$ osi}
+		\[    \mathbf{T}_{R_{z}} = \left[ \begin{array}{cccc}
+		\mathtt{cos}\theta & -\mathtt{sin}\theta & 0 & 0 \\
+		\mathtt{sin}\theta & \mathtt{cos}\theta & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 1 
+		\end{array} \right] \]
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Transformacija - Preslikavanje}
+	Preslikavanje iz jednog u drugi koordinatni sustav\\
+	Npr. x-y-z u x'-y'-z'.
+	$$ x'\rightarrow \left(\theta_{x'x}, \theta_{x'y}, \theta_{x'z}\right)$$
+	$$ y'\rightarrow \left(\theta_{y'x}, \theta_{y'y}, \theta_{y'z}\right)$$
+	$$ z'\rightarrow \left(\theta_{z'x}, \theta_{z'y}, \theta_{z'z}\right)$$
+\end{frame}
+
+\begin{frame}{Transformacija - Preslikavanje}
+	\begin{block}{Preslikavanje}
+		\[    \mathbf{T}_{R} = \left[ \begin{array}{cccc}
+		\mathtt{cos}\theta_{x'x} & \mathtt{cos}\theta_{x'y} & \mathtt{cos}\theta_{x'z} & 0 \\
+		\mathtt{cos}\theta_{y'x} & \mathtt{cos}\theta_{y'y} & \mathtt{cos}\theta_{y'z} & 0 \\
+		\mathtt{cos}\theta_{z'x} & \mathtt{cos}\theta_{z'y} & \mathtt{cos}\theta_{z'z} & 0 \\
+		0 & 0 & 0 & 1 
+		\end{array} \right] \]
+	\end{block}
+\end{frame}
+
+\section{Složene transformacije}
+\begin{frame}{Složene transformacije}
+	Skaliranje i translacija:
+	\begin{center}
+		\includegraphics[width=10cm]{slike/slozene_transformacije_01.png}
+	\end{center}
+	$$ TS = \left[ \begin{array}{ccc}
+	1 & 0 & 3 \\
+	0 & 1 & 1  \\
+	0 & 0 & 1 
+	\end{array} \right]
+	\left[ \begin{array}{ccc}
+	2 & 0 & 0 \\
+	0 & 2 & 0  \\
+	0 & 0 & 1 
+	\end{array} \right] = 
+	\left[ \begin{array}{ccc}
+	2 & 0 & 3 \\
+	0 & 2 & 1  \\
+	0 & 0 & 1 
+	\end{array} \right]
+	$$
+\end{frame}
+
+\begin{frame}{Složene transformacije - contd.}
+	Skaliranje i translacija - $p' = T(Sp) = TS p$:
+	\begin{center}
+		\includegraphics[width=10cm]{slike/slozene_transformacije_01.png}
+	\end{center}
+	Translacija i skaliranje - $p' = S(Tp) = ST p$:
+	\begin{center}
+		\includegraphics[width=10cm]{slike/slozene_transformacije_02.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Složene transformacije - contd.}
+	Skaliranje i translacija - $p' = T(Sp) = TS p$:
+	$$ TS = \left[ \begin{array}{ccc}
+	1 & 0 & 3 \\
+	0 & 1 & 1  \\
+	0 & 0 & 1 
+	\end{array} \right]
+	\left[ \begin{array}{ccc}
+	2 & 0 & 0 \\
+	0 & 2 & 0  \\
+	0 & 0 & 1 
+	\end{array} \right] = 
+	\left[ \begin{array}{ccc}
+	2 & 0 & 3 \\
+	0 & 2 & 1  \\
+	0 & 0 & 1 
+	\end{array} \right]
+	$$
+	Translacija i skaliranje - $p' = S(Tp) = ST p$:
+	$$ TS = \left[ \begin{array}{ccc}
+	2 & 0 & 0 \\
+	0 & 2 & 0  \\
+	0 & 0 & 1 
+	\end{array} \right]
+	\left[ \begin{array}{ccc}
+	1 & 0 & 3 \\
+	0 & 1 & 1  \\
+	0 & 0 & 1 
+	\end{array} \right] = 
+	\left[ \begin{array}{ccc}
+	2 & 0 & 6 \\
+	0 & 2 &2  \\
+	0 & 0 & 1 
+	\end{array} \right]
+	$$
+\end{frame}
+
+\begin{frame}{Složene transformacije}
+	\[ \left[ \begin{array}{c}
+	x' \\ y' \\ z'\\ w'
+	\end{array}   \right]   = \]  
+	\[ \left( \left[ \begin{array}{cccc}
+	1 & 0 & 0 & t_{x} \\
+	0 & 1 & 0 & t_{y} \\
+	0 & 0 & 1 & t_{z} \\
+	0 & 0 & 0 & 1 
+	\end{array} \right] 
+	\left[ \begin{array}{cccc}
+	\mathtt{cos}\theta & 0 & \mathtt{sin}\theta & 0 \\
+	0 & 1 & 0 & 0 \\
+	-\mathtt{sin}\theta & 0 & \mathtt{cos}\theta & 0 \\
+	0 & 0 & 0 & 1 
+	\end{array} \right] 
+	\left[ \begin{array}{cccc}
+	s_{x} & 0 & 0 & 0 \\
+	0 & s_{y} & 0 & 0 \\
+	0 & 0 & s_{z} & 0 \\
+	0 & 0 & 0 & 1 
+	\end{array} \right] \right)
+	\left[ \begin{array}{c}
+	x \\ y \\ z\\ w
+	\end{array}   \right] \]
+	\[ \mathbf{p}' = \left(\mathbf{T}_T \mathbf{T}_{R_{y}} \mathbf{T}_{S} \right)\mathbf{p} \]
+\end{frame}
+
+\begin{frame}
+	Malo o množenju\\
+	\[ \mathbf{p}' = \left(\mathbf{T}_T \mathbf{T}_{R_{y}} \mathbf{T}_{S} \right)\mathbf{p} \]
+	\[ \mathbf{p}' = \left( \mathbf{T}_T \left( \mathbf{T}_{R_{y}} 
+	\left( \mathbf{T}_{S} \mathbf{p} \right) \right) \right) \]
+	\alert{ \[ \mathbf{p}' = \mathbf{T}_T \mathbf{T}_{R_{y}} \mathbf{T}_{S}\mathbf{p} \] }
+	Odnosno: \Large{Redoslijed operacija je BITAN!}
+\end{frame}
+
+%\begin{frame}{Rotacija oko proizvoljnog vektora}
+%
+%\end{frame}
+\begin{frame}{Inverzne transformacije}
+	\begin{itemize}
+		\item<1-> translacija - inverzna matrice translacije odgovara inverznoj 
+		transformaciji tj. pomaku u suprotnom smjeru, odnosno mijenja se
+		\textbf{predznak pomaka} duž pojedinih osi
+		\item<2-> rotacija – inverzna matrice rotacije odgovara inverznoj
+		transformaciji tj. transponiranoj matrici originalne rotacije, jednostavnije, rotaciji u suprotnom smjeru, odnosno mijenja se \textbf{predznak kuta} rotacije
+		\item<3-> skaliranje - inverzna matrice skaliranja odgovara inverznoj
+		transformaciji tj. povećavanje odgovara smanjivanju, odnosno
+		mijenja se faktor skaliranja u \textbf{recipročnu} vrijednost
+	\end{itemize}
+\end{frame}
+
+\section{Transformacija normala}
+\begin{frame}{Problem}
+	
+	Zadane su točke $T_1(0,0)$ i $T_2(5,1)$. Vektor pravca je $\vec{v} = T_2 - T_1 = (5,1)$
+	
+	Normala vektora $\vec{v}$: $\vec{n} = (-1, 5)$, jer je $\vec{v}\cdot\vec{n}=0$
+	
+	Zadajmo transformaciju: $$\mathbf{M} = \left[\begin{array}{ccc}
+	1 & 0& 0 \\
+	0 & 2 & 0 \\
+	0 & 0 & 1
+	\end{array}\right]$$
+	
+	Nove točke su $T'_1 = \mathbf{M}T_1 = (0,0)$ i $T'_2 = \mathbf{M}T_2=(5, 2)$
+	
+	Vektor pravca je sada $\vec{v}' = T'_2 - T'_1 = (5,2)$ 
+	
+	Skalirana normala je $\vec{n}' = \mathbf{M}\vec{n} = (-1, 10)$
+	
+	Sada $\vec{v}\cdot'\vec{n}'\neq0$
+\end{frame}
+
+\begin{frame}{Rješenje}
+	Treba matrično množiti - ovdje su vektori napisani kao jedan redak:
+	\onslide<+->{
+		$$\mathbf{v} \mathbf{n}^T = 0$$}
+	\onslide<+->{
+		Vektor $\mathbf{v}$ množimo sa $\mathbf{M}$, tada nam skalarni produkt ne vrijedi. Zato moramo \textit{poništiti} operaciju s inverznom matricom transformacije, da dobijemo jediničnu matricu $\mathbf{I}$:
+		$$\mathbf{v} \mathbf{M}\mathbf{M}^{-1}\mathbf{n}^T = 0$$}
+	
+	\onslide<+->{
+		Grupiramo operacije: 
+		$$(\mathbf{v} \mathbf{M})(\mathbf{M}^{-1}\mathbf{n}^T) = 0$$
+	}
+\end{frame}
+\begin{frame}{Rješenje, contd.}
+	$$(\mathbf{v} \mathbf{M})(\mathbf{M}^{-1}\mathbf{n}^T) =\mathbf{v}'\mathbf{n}'^{T} =0$$
+	
+	\onslide<+->{$\mathbf{n}'^{T} = \mathbf{M}^{-1}\mathbf{n}^T$ }
+	
+	\onslide<+->{$\mathbf{n}' = (\mathbf{M}^{-1}\mathbf{n}^T)^T$ }
+	
+	\onslide<+->{Na kraju: $\mathbf{n}' = \mathbf{n}{\mathbf{M}^{-1}}^T$ 
+		
+		Normala se dobije množenjem \textbf{inverzne transponirane} matrice transformacije.
+	}
+	
+	\onslide<+->{
+		Za naš primjer: 
+		
+		$\mathbf{M}^{-1} = \left[\begin{array}{ccc}
+		1 & 0& 0 \\
+		0 & 1/2 & 0 \\
+		0 & 0 & 1
+		\end{array}\right]$, i 
+		${\mathbf{M}^{-1}}^T = \left[\begin{array}{ccc}
+		1 & 0& 0 \\
+		0 & 1/2 & 0 \\
+		0 & 0 & 1
+		\end{array}\right]$
+	}
 \end{frame}
 \plain{Pitanja?}
 \end{document}
