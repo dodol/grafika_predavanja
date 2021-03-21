@@ -1,6 +1,9 @@
 
 \documentclass[9pt]{beamer}
 \input{../../config/config.tex}
+
+% \includeonlyframes{current}
+
 %\documentclass[ucs]{beamer}
 %\usetheme[menuwidth={0.3\paperwidth}]{erlangen}
 %\setbeamercovered{transparent=20} 
@@ -241,8 +244,8 @@
 		\includegraphics[height=1.5cm]{slike/funny_cow_rotate.png} \\
 		\includegraphics[height=1.5cm]{slike/basis_vector_rotation.png}
 	\end{center}
-	\onslide<1->{Rotacija za kut $\theta$ oko ishodišta - $\mathbf{v}' = \mathbf{R}\mathbf{v}$}
-	\onslide<2->{
+	Rotacija za kut $\theta$ oko ishodišta - $\mathbf{v}' = \mathbf{R}\mathbf{v}$
+	
 		\begin{align*}
 		e_{1} \left[ \begin{array}{c} 1 \\ 0  \end{array} \right] \Rightarrow
 		\left[ \begin{array}{c} \cos\theta \\ \sin \theta  \end{array} \right]
@@ -250,66 +253,63 @@
 		e_{2} \left[ \begin{array}{c} 0 \\ 1  \end{array} \right] \Rightarrow
 		\left[ \begin{array}{c} -\sin\theta \\ \cos\theta  \end{array} \right]  
 		\end{align*}
-
-	}
-	\onslide<3->{
 		\begin{align*}
 		\mathbf{R} =  \left[ \begin{array}{cc} \mathrm{cos}\theta & -\sin\theta \\ 
 		\sin\theta & \cos\theta  \end{array} \right]
 		\nonumber
-		\end{align*}}
+		\end{align*}
 \end{frame}
 
 \begin{frame}{Linearne transformacije  - Rotacija contd.}
 	\begin{center}
 		\includegraphics[height=1.5cm]{slike/funny_cow_rotate.png}
 	\end{center}
-	\onslide<1->{
+	
 		\begin{align*}
 		\mathbf{R} \mathbf{v}=  \left[ \begin{array}{cc} \cos\theta & -\sin\theta \\ 
 		\sin\theta & \cos\theta  \end{array} \right] 
 		\left[ \begin{array}{c} x \\ y  \end{array} \right] = 
 		\left[ \begin{array}{c} x \cos\theta - y  \sin\theta\\ 
 		x \sin\theta + y  \cos\theta  \end{array} \right]
-		\end{align*}}
-	\onslide<2->{Rotacija UVIJEK oko ishodišta}
-	\onslide<3->{\begin{block}{Linearne tranformacije, podsjetnik}
+		\end{align*}
+	Rotacija UVIJEK oko ishodišta
+	\begin{block}{Linearne tranformacije, podsjetnik}
 			Linearne transformacije uključuju rotaciju, skaliranje, zrcaljenje i smik.
 			Ishodište je fiksno
 		\end{block}
-	}
+	
 \end{frame}
 
 \begin{frame}{Linearne transformacije  - Skaliranje}
-	\onslide<1->{$$s_{x} =3, s_{y} = 2$$}
-	\onslide<2->{
+	$$s_{x} =3, s_{y} = 2$$
+	
 		\begin{equation}
 		\mathbf{s} =  \left[ \begin{array}{c} s_{x} \\ s_{y}  \end{array} \right]
 		\nonumber
-		\end{equation}}
-	\onslide<2->{$$\mathbf{v}' = \mathbf{s}\mathbf{v}$$}
-	\onslide<3->{
+		\end{equation}
+	$$\mathbf{v}' = \mathbf{s}\mathbf{v}$$
+	
 		\begin{equation}
 		e_{1} \left[ \begin{array}{c} 1 \\ 0  \end{array} \right] \Rightarrow
 		s_{x}e_{1} = \left[ \begin{array}{c} s_{x} \\ 0  \end{array} \right] 
 		\nonumber
 		\end{equation}
-	}
-	\onslide<4->{
+	
+	
 		\begin{equation}
 		e_{2} \left[ \begin{array}{c} 0 \\ 1  \end{array} \right] \Rightarrow
 		s_{y}e_{2} = \left[ \begin{array}{c} 0 \\ s_{y}  \end{array} \right] 
 		\nonumber
 		\end{equation}
-	}
-	\onslide<5->{
+	
+	
 		\begin{equation}
 		\mathbf{S} =  \left[ \begin{array}{cc} s_{x} & 0 \\ 0 & s_{y}  \end{array} \right] \Rightarrow
 		\mathbf{S}\mathbf{v} = \left[ \begin{array}{cc} s_{x} & 0 \\ 0 & s_{y}  \end{array} \right]
 		\left[ \begin{array}{c} x \\ y  \end{array} \right] = 
 		\left[ \begin{array}{c} s_{x}x \\ s_{y}y  \end{array} \right] 
 		\nonumber
-		\end{equation}}
+		\end{equation}
 \end{frame}
 
 \begin{frame}{Zrcaljenje}
@@ -432,25 +432,77 @@
 	\end{block}
 \end{frame}
 
+\begin{frame}{Homogene koordinate}
+	\begin{itemize}
+		\item Euklidski prostor: dva paralelna pravca se ne mogu sijeći
+		\item Projektivni prostor: ipak se paralelni pravci mogu sijeći
+		\begin{itemize}
+			\item u točki u beskonačnosti
+			\item u točki na horizontu
+		\end{itemize} 
+		\item Euklidski prostor je "specijalni slučaj" projektivne geometrije
+		\item Kako definirati beskonačno daleku točku? $(\infty, \infty)$? Ma da.
+	\end{itemize}
+	\begin{center}
+		\includegraphics[height=3cm]{slike/railroad2.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Homogene koordinate - rješenje}
+	\begin{itemize}
+		\item $N$d koordinate prikazati sa $N+1$ brojem.
+		\item Dodajemo novu koordinatu $w$
+		\item $(x,y)$ postaje $(x,y,w)$
+		\item $X = x/w$, $Y = y/w$
+	\end{itemize}
+	\begin{block}{Primjer}
+		Točka $(1, 2)$ postaje u homogenim koordinatama $(1, 2, 1)$.
+		
+		Pomaknemo li tu istu točku beskonačno daleko: $(1, 2, 0)$. Odnosno, $(1/0, 2/0) = (\infty, \infty)$.
+		
+		Zaključno: možemo izraziti \textit{beskonačno} bez da napišemo znak $\infty$.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Sjecište dva paralelna pravca}
+	\begin{align*}
+		Ax + By + C &= 0 \\
+		Ax + By + D &= 0
+	\end{align*}
+	Za $C \neq D$
+	
+	\begin{align*}
+	A\frac{x}{w} + B\frac{y}{w} + C &= 0 \\
+	A\frac{x}{w} + B\frac{y}{w} + D &= 0
+	\end{align*}
+	
+	\begin{align*}
+	Ax + By + Cw &= 0 \\
+	Ax + By + Dw &= 0
+	\end{align*}
+	
+	Rješenje: $(x, y, 0)$, jer je $(C-D)w=0$, $w=0$. Pravci se sijeku u točki na horizontu.
+\end{frame}
 \begin{frame}{Ipak je stvar malo kompliciranija}
 	Osim što se homogene koordinate mogu shvatiti kao dobar trik za uniformni(homogeni) način primjene tranformacije, može se upotrijebiti i geometrijska interpretacija
 	\\
 	Jednostavno svakoj 2D točki dodajemo treću koordinatu, $w \neq 0$. Recimo da je to udaljenost od očišta.  Što je $w$ veći točka će se više će se pomaknuti.
 \end{frame}
 
-\begin{frame}{Geometrijska interpretacija, 1d}
-	\[    \left[ \begin{array}{c}
-	x' \\ 1 \end{array} \right]  = \left[ \begin{array}{cc}
-	1 &  c \\
-	0 & 1 
-	\end{array} \right]  \left[ \begin{array}{c}
-	x \\ 1\end{array} \right]\]
-	
-	\begin{center}
-		\includegraphics[width=5cm]{slike/translacija_1d_02.png}
-	\end{center}
-	Crvena linija i ishodište se ne pomiču $\rightarrow$ 2D smik.
-\end{frame}
+
+%\begin{frame}{Geometrijska interpretacija, 1d}
+%	\[    \left[ \begin{array}{c}
+%	x' \\ 1 \end{array} \right]  = \left[ \begin{array}{cc}
+%	1 &  c \\
+%	0 & 1 
+%	\end{array} \right]  \left[ \begin{array}{c}
+%	x \\ 1\end{array} \right]\]
+%	
+%	\begin{center}
+%		\includegraphics[width=5cm]{slike/translacija_1d_02.png}
+%	\end{center}
+%	Crvena linija i ishodište se ne pomiču $\rightarrow$ 2D smik.
+%\end{frame}
 
 \begin{frame}{Perspektivna ekvivalentnost}
 	Svi umnošci skalara koji imaju vrijednost $\neq 0 $ se smatraju jednakim
@@ -463,18 +515,24 @@
 	x/w \\ y/w \\ z/w\\ 1\end{array} \right] \nonumber
 	\end{equation}
 	za $ a\neq 0 $ i $ w\neq 0 $
-\end{frame}
-
-\begin{frame}{Perspektivna ekvivalentnost - contd}
 	
 	\begin{block}{Perspektiva}
 		Sve 3D točke padaju na istu 2D koordinatu na slici.\\
 		U tom smislu su sve takve 3D točke identične.
 	\end{block}
-	\begin{center}
-		\includegraphics[width=6cm]{slike/homogenekoo_eqv.png}
-	\end{center}
+
 \end{frame}
+
+%\begin{frame}{Perspektivna ekvivalentnost - contd}
+%	
+%	\begin{block}{Perspektiva}
+%		Sve 3D točke padaju na istu 2D koordinatu na slici.\\
+%		U tom smislu su sve takve 3D točke identične.
+%	\end{block}
+%	\begin{center}
+%		\includegraphics[width=6cm]{slike/homogenekoo_eqv.png}
+%	\end{center}
+%\end{frame}
 
 \begin{frame}{1d primjer}
 	1D točke $(x,w)$: Sve ekvivalentne homogene točke leže na linijama koje prolaze kroz ishodište koordinatnog sustava.
@@ -520,11 +578,10 @@
 		\begin{itemize}
 			\item Potrebne udaljenosti za GPU tj. $Z$ međuspremnik, koji daje informaciju što je ispred ili iza čega
 		\end{itemize}
-	\end{itemize}
-	
-	
-	
+	\end{itemize}	
 \end{frame}
+
+
 
 \section{2d transformacije}
 
