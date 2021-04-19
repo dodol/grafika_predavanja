@@ -35,7 +35,7 @@
 
 \title{Interpolacije}
 
-\subtitle{ This is the way to build our castle in the sky}
+\subtitle{ Would such a thing be read and understoold so easily?}
 \institute{Računalna grafika}
 
 
@@ -181,6 +181,36 @@ Rješenje? Zadati derivaciju za neki $t$, npr.
 \begin{center}
 	\includegraphics[height=2.5cm]{./slike/lin_interp_der_eq_0.png}
 \end{center}
+\end{frame}
+
+\begin{frame}{Bilinearna interpolacija}
+	Tražimo vrijednost $f$ u točki $(x, y)$ dok su poznate vrijednosti $Q11 = (x1, y1), Q12 = (x1, y2), Q21 = (x2, y1), and Q22 = (x2, y2)$. 
+	\begin{center}
+		\includegraphics[height=2.5cm]{./slike/bilinear_interpolation.png}
+	\end{center}
+	Interpoliramo u $x$ smjeru:
+	\begin{align*}
+	f(x, y_1) & \approx \frac{x_2 - x}{x_2 - x_1} f(Q_{11}) + 
+	            \frac{x - x_1}{x_2 - x_1} f(Q_{21}) \\
+	f(x, y_2) & \approx \frac{x_2 - x}{x_2 - x_1} f(Q_{12}) + 
+	            \frac{x - x_1}{x_2 - x_1} f(Q_{22})
+	\end{align*}
+	A onda i u $y$ smjeru:
+	\begin{align*}
+		f(x, y) & \approx \frac{y_2 - y}{y_2 - y_1} f(x, y_1) +
+		           \frac{y - y_1}{y_2 - y_1} f(x, y_2)
+	\end{align*}
+\end{frame}
+\begin{frame}{Bilinearna interpolacija}
+	\begin{center}
+		\includegraphics[height=5.5cm]{./slike/bilinear_interpolation_2.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Interpolacija trokuta}
+	\begin{center}
+		\includegraphics[height=5.5cm]{./slike/barycentriccolor.png}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Neke klasifikacije  i svojstva krivulja}
