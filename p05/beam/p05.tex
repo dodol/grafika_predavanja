@@ -1,0 +1,213 @@
+
+\documentclass[9pt]{beamer}
+\input{../../config/config.tex}
+
+% \includeonlyframes{current}
+
+%\documentclass[ucs]{beamer}
+%\usetheme[menuwidth={0.3\paperwidth}]{erlangen}
+%\setbeamercovered{transparent=20} 
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{mathtools}
+
+\definecolor{erlangenlyellow}{RGB}{123, 25, 121}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{default}
+%\usepackage[T1]{fontenc}
+
+\usepackage{verbatim}
+\usepackage{listings}
+
+
+\usepackage{subcaption}
+\usepackage{lmodern}
+
+\title{Teksture i protočni sustav}
+
+% \subtitle{ Yet, it doesn't seem so clear to me anymore…?}
+\subtitle {And so it was told, and so I told myself}
+\institute{Računalna grafika}
+
+
+\begin{document}
+\begin{frame}
+ \titlepage
+\end{frame}
+
+%\begin{frame}{Sadržaj}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+% \section{Uvod}
+\section{Grafički protočni sustav}
+\begin{frame}{Protočni sustav}
+	\begin{center}
+		\includegraphics[width=10cm]{./slike/graphics_pipeline_01.png}
+	\end{center}
+\begin{itemize}
+	\item Vertex Processing: Procesiranje i transformacija verteksa i normala
+	\item Rasterizacija: Konverzija svakog primitiva (povezanih verteksa) u set fragmenata. Fragment, ugrubo: pikel s atributima (položaj, boja, normala i tekstura)
+	\item Fragment Processing: Procesiranje fragmenata
+	\item Output Merging: Spajanje fragmenata svih primitiva iz 3D u 2D color-pixel za prikaz
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Protočni sustav}
+	\begin{center}
+		\includegraphics[width=10cm]{./slike/graphics_pipeline_01.png}
+	\end{center}
+	\begin{itemize}
+		\item Vertex Processing: vertex shader: transformacije i osvjetljavanje za svaki verteks
+		\item Fragment processor: fragment shader: teksture i osvjetljavanje za svaki fragment
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Pixel vs fragment}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/graphics_pipeline_02.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Protočni sustav}
+	\begin{center}
+		\includegraphics[width=10cm]{./slike/graphics_pipeline_03.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Protočni sustav}
+	\begin{center}
+		\includegraphics[width=10cm]{./slike/graphics_pipeline_04.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Protočni sustav i shaders}
+	\begin{center}
+		\includegraphics[width=8cm]{./slike/graphics_pipeline_05.png}
+	\end{center}
+\end{frame}
+
+\section{Teksture}
+\begin{frame}{Protočni sustav i teksture}
+	\begin{center}
+		\includegraphics[width=8cm]{./slike/graphics_pipeline_06.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_023.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_024.jpg}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_029.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{block}{Algoritam}
+		\texttt{for each covered screen sample (x,y):}\\
+		\texttt{\ (u,v) = eval texcoord val at (x,y):}\\
+		\texttt{\ float3 texcolor = texture.sample(u,v);} \\
+	\end{block}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_050.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_051.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_052.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_053.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_030.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Teksture}
+	\begin{center}
+		\includegraphics[width=6cm]{./slike/slide_054.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Posebne namjene}
+	\begin{block}{Preslikavanje osvjetljenja}
+		\begin{center}
+			\includegraphics[width=6cm]{slike/teksture_light.png}
+		\end{center}
+		\begin{center}
+			\includegraphics[width=6cm]{slike/teksture_light_02.png}
+		\end{center}
+	\end{block}
+\end{frame}
+%
+\begin{frame}{Billboards}
+	\begin{block}{Prozirne teksture}
+		\begin{itemize}
+			\item Preslikavanje teksture na poligon koji je uvijek okrenut prema promatraču (ili više
+			statičnih poligona)
+			\item Obično se koriste za prikaz drveća ($\alpha=0$ prozirno, $\alpha=1$ zeleno)
+		\end{itemize}
+	\end{block}
+	\begin{center}
+		\includegraphics[width=6cm]{slike/teksture_billboards_01.png}
+	\end{center}
+	\begin{center}
+		\includegraphics[width=6cm]{slike/teksture_billboards_02.png}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Posebne namjene}
+	
+	\begin{block}{Stapanje tekstura uz zadane prozirnosti - $\alpha$ blending}
+		\begin{itemize}
+			\item Više slojeva koji imaju definiranu prozirnost
+			\item Konveksna kombinacija boja - $C = c_{a}\alpha_{a}+ c_{b}\alpha_{b}(1-\alpha{a})$ 
+			\item prozirnost - $\alpha = \alpha_{a}+ \alpha_{b}(1-\alpha{a})$ 
+		\end{itemize}
+	\end{block}
+	\begin{center}
+		\includegraphics[width=9cm]{slike/07_prozirnost.png}
+	\end{center}
+\end{frame}
+
+\plain{Pitanja?}
+\end{document}
