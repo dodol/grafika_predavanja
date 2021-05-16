@@ -72,49 +72,49 @@
 	\item Danas osnovni alat
 \end{itemize}
 \end{frame}
-
-\begin{frame}{Render jednadžba}
-	\begin{align*}
-	L_o(X, \hat{\omega}_o) = L_e(X, \hat{\omega}_e) +
-	 \int_{S^2}  L_i(X, \hat{\omega}_i) f_X(\hat{\omega}_i), \hat{\omega}_o)) \left|\hat{\omega}_i\cdot \hat{n}\right| 
-	 \mathrm{d} \hat{\omega}_i
-	\end{align*}
-	\begin{itemize}
-		\item $X$: točka u sceni
-		\item $\hat{\omega}_o$: izlazni smjer(\textit{outgoing dir}), smjer prema očištu
-		\item $\hat{\omega}_i$: dolazni, ulazni smjer(\textit{incoming dir}), smjer svjetla na točku $X$ 
-    	\item $\hat{n}$: normala površine
-		\item $S^2$: svi dolazni, ulazni smjerovi(\textit{incoming directions})
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Render jednadžba}
-	\begin{align*}
-	L_o(X, \hat{\omega}_o) = L_e(X, \hat{\omega}_e) +
-	\int_{S^2}  L_i(X, \hat{\omega}_i) f_X(\hat{\omega}_i), \hat{\omega}_o)) \left|\hat{\omega}_i\cdot \hat{n}\right| 
-	\mathrm{d} \hat{\omega}_i
-	\end{align*}
-	\begin{itemize}
-		\item $L_o(X, \hat{\omega}_o)$: Izlazno svjetlo - Kakav je rezultirajući intenzitet svjetla za zadanu točku i smjer?
-		\item $L_e(X, \hat{\omega}_e)$: Emitirano svjetlo - Kakav je intenzitet svjetla koji emitira zadana točka za zadani smjer? - Recimo izvor svjetla
-		\item $L_i(X, \hat{\omega}_i)$: Dolazno, ulazno svjetlo - za zadanu točku koji intenzitet svjetla vidim za zadani smjer?
-		\item $f_X(\hat{\omega}_i), \hat{\omega}_o))$: Materijal - za zadani ulazni i izlazni smjer, koji intenzitet svjetla ide u izlaznom smjeru?
-		\item $\left|\hat{\omega}_i\cdot \hat{n}\right|$: Lambert - geometrijski izraz, recimo, difuzni 
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Render jednadžba}
-	\begin{align*}
-	L_o(X, \hat{\omega}_o) = L_e(X, \hat{\omega}_e) +
-	\int_{S^2}  L_i(X, \hat{\omega}_i) f_X(\hat{\omega}_i), \hat{\omega}_o)) \left|\hat{\omega}_i\cdot \hat{n}\right| 
-	\mathrm{d} \hat{\omega}_i
-	\end{align*}
-	\begin{itemize}
-		\item $S^2$: svi dolazni, ulazni smjerovi(\textit{incoming directions})
-		\item $\mathrm{d} \hat{\omega}_i$
-	\end{itemize}
-Pure Path tracing: zbrojimo sva svjetla iz svih smjerova
-\end{frame}
+%
+%\begin{frame}{Render jednadžba}
+%	\begin{align*}
+%	L_o(X, \hat{\omega}_o) = L_e(X, \hat{\omega}_e) +
+%	 \int_{S^2}  L_i(X, \hat{\omega}_i) f_X(\hat{\omega}_i), \hat{\omega}_o)) \left|\hat{\omega}_i\cdot \hat{n}\right| 
+%	 \mathrm{d} \hat{\omega}_i
+%	\end{align*}
+%	\begin{itemize}
+%		\item $X$: točka u sceni
+%		\item $\hat{\omega}_o$: izlazni smjer(\textit{outgoing dir}), smjer prema očištu
+%		\item $\hat{\omega}_i$: dolazni, ulazni smjer(\textit{incoming dir}), smjer svjetla na točku $X$ 
+%    	\item $\hat{n}$: normala površine
+%		\item $S^2$: svi dolazni, ulazni smjerovi(\textit{incoming directions})
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Render jednadžba}
+%	\begin{align*}
+%	L_o(X, \hat{\omega}_o) = L_e(X, \hat{\omega}_e) +
+%	\int_{S^2}  L_i(X, \hat{\omega}_i) f_X(\hat{\omega}_i), \hat{\omega}_o)) \left|\hat{\omega}_i\cdot \hat{n}\right| 
+%	\mathrm{d} \hat{\omega}_i
+%	\end{align*}
+%	\begin{itemize}
+%		\item $L_o(X, \hat{\omega}_o)$: Izlazno svjetlo - Kakav je rezultirajući intenzitet svjetla za zadanu točku i smjer?
+%		\item $L_e(X, \hat{\omega}_e)$: Emitirano svjetlo - Kakav je intenzitet svjetla koji emitira zadana točka za zadani smjer? - Recimo izvor svjetla
+%		\item $L_i(X, \hat{\omega}_i)$: Dolazno, ulazno svjetlo - za zadanu točku koji intenzitet svjetla vidim za zadani smjer?
+%		\item $f_X(\hat{\omega}_i), \hat{\omega}_o))$: Materijal - za zadani ulazni i izlazni smjer, koji intenzitet svjetla ide u izlaznom smjeru?
+%		\item $\left|\hat{\omega}_i\cdot \hat{n}\right|$: Lambert - geometrijski izraz, recimo, difuzni 
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Render jednadžba}
+%	\begin{align*}
+%	L_o(X, \hat{\omega}_o) = L_e(X, \hat{\omega}_e) +
+%	\int_{S^2}  L_i(X, \hat{\omega}_i) f_X(\hat{\omega}_i), \hat{\omega}_o)) \left|\hat{\omega}_i\cdot \hat{n}\right| 
+%	\mathrm{d} \hat{\omega}_i
+%	\end{align*}
+%	\begin{itemize}
+%		\item $S^2$: svi dolazni, ulazni smjerovi(\textit{incoming directions})
+%		\item $\mathrm{d} \hat{\omega}_i$
+%	\end{itemize}
+%Pure Path tracing: zbrojimo sva svjetla iz svih smjerova
+%\end{frame}
 
 \begin{frame}{Ray casting}
 \begin{itemize}
@@ -685,137 +685,137 @@ k_s\left(\mathbf{v}\cdot\mathbf{r}\right)^q\right] + k_tI_o
 \end{figure}
 \tiny{Preuzeto sa \texttt{scratchapixel.com}}
 \end{frame}
-
-\section{Sjene}
-
-\begin{frame}{Sjene}
-\begin{center}
-	\includegraphics[width=8cm]{slike/sjene_01.png}
-\end{center}
-
-\end{frame}
-
-\begin{frame}{Sjene, kostur algoritma}
-\begin{algorithm*}[H]
-%\KwResult{Write here the result }
-color = ka*hit.material().kd()\;
-\For{ za svaki izvor svjetla}
-{
-	Ray ray2(hitPoint, directionToLight)\;
-	ambient = ka\;
-	Hit hit2(distanceToLight)\;
-	\For{ za svaki objekt}
-	{
-		object.intersect(ray2, hit2)\;
-		%diffuseColor = object.intersect(ray2, hit2)\;
-		\If{hit2->getT() == distanceToLight}
-		{
-			color += hit.getMaterial().shade(ray, hit, directionToLight, lightColor)\;
-		}
-	}
-	
-}
-return color\;
-%\caption{How to write algorithms}
-\end{algorithm*}
-\end{frame}
-
-\begin{frame}{Sjene, contd.}
-\begin{center}
-\includegraphics[width=4cm]{slike/sjene_02.png}
-\end{center}
-U čemu se razlikuju \textit{shadow} zrake u odnosu na \textit{eye} zrake?\\
-Nije potrebno naći najbliži objekt, dovoljno je da je samo jedan između zrake i izvora svjetla 
-\end{frame}
-
-\section{Refleksija}
-\begin{frame}{Refleksija}
-
-\begin{center}
-\includegraphics[width=5cm]{slike/refleksija_01.png}
-\end{center}
-\begin{itemize}
-\item Odaslati zraku simetrično na normalu
-\item pomnožiti sa zrcalnom komponentom $k_s$, ili nešto slično tome
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Refleksija, kako izračunati zrcalnu zraku}
-
-\begin{center}
-\includegraphics[width=6cm]{slike/refleksija_02.png}
-\end{center}
-$$\mathbf{r} = \mathbf{D} - 2(\mathbf{D}\cdot \mathbf{n})\mathbf{n}$$
-\end{frame}
-
-
-\section{Prozirnost}
-\begin{frame}{Prozirnost}
-
-\begin{center}
-\includegraphics[width=5cm]{slike/prozirnost_01.png}
-\end{center}
-\begin{itemize}
-\item Odaslati zraku u \textit{refrakcijskom} smjeru
-\item pomnožiti s koeficijentom refrakcije $k_t$
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Prozirnost, contd.}
-
-\begin{center}
-\includegraphics[width=3cm]{slike/prozirnost_02.png}
-\end{center}
-\begin{itemize}
-\item dva materijala, dva indeksa refrakcije, $\eta_i$ i $\eta_t$
-\end{itemize}
-Snell-Descartes -ov zakon zakon:
-$$\eta_i \theta_i = \eta_t \theta_t$$
-$$\frac{\theta_t}{\theta_i} = \frac{\eta_t}{\eta_i} = \eta_r$$
-Relativni indeks refrakcije: $\eta_r$\\
-Cilj je odrediti smjer zrake $\mathbf{T}$
-\end{frame}
-
-\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$}
-\begin{center}
-\includegraphics[width=3cm]{slike/prozirnost_03.png}
-\end{center}
-Odredimo $\mathbf{I}$ i $\mathbf{M}$:
-\begin{align*}
-\mathbf{I} &= \mathbf{N}\cos\theta_i - \mathbf{M}\sin\theta_i \\
-\mathbf{M} &= (\mathbf{N}\cos\theta_i - \mathbf{I})/\sin\theta_i
-\end{align*}
-$\mathbf{T}$ je sada jednostavan:
-$$ \mathbf{T} = -\mathbf{N}\cos\theta_t - \mathbf{M}\sin\theta_t $$
-Cilj je izračunati $\mathbf{T}$ bez trigonometrijskih f-ja. Bilo bi super da možemo
-koristiti samo skalarne produkte\ldots
-\end{frame}
-
-\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
-\begin{align}
-\mathbf{T} &= -\mathbf{N}\cos\theta_t + \mathbf{M}\sin\theta_t \\
-&= -\mathbf{N}\cos\theta_t + ((\mathbf{N}\cos\theta_i - \mathbf{I})/\sin\theta_i)\sin\theta_t \\
-&= -\mathbf{N}\cos\theta_t + (\mathbf{N}\cos\theta_i - \mathbf{I})\eta_r \\
-&= \left(\eta_r\cos\theta_i - \cos\theta_t\right)\mathbf{N} - \eta_r\mathbf{I} \\
-&= \left(\eta_r\cos\theta_i - \sqrt{1-\sin^2\theta_t}\right)\mathbf{N} - \eta_r\mathbf{I} \\
-&= \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2\sin^2\theta_i}\right)\mathbf{N} - \eta_r\mathbf{I} \\
-&= \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2(1-\cos^2\theta_i)}\right)\mathbf{N} - \eta_r\mathbf{I} \\
-\mathbf{T} &= \left(\eta_r(\mathbf{N}\cdot \mathbf{I}) - \sqrt{1-\eta_r^2(1-(\mathbf{N}\cdot \mathbf{I})^2)}\right)\mathbf{N} - \eta_r\mathbf{I}
-\end{align}
-\end{frame}
-
-\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
-\begin{center}
-\includegraphics[width=3cm]{slike/prozirnost_03.png}
-\end{center}
-\begin{itemize}
-\item  U izvodu smo prvo zamijenili $\mathbf{M}$ iz $\mathbf{M} = (\mathbf{N}\cos\theta_i - \mathbf{I})/\sin\theta_i$
-\item uveli koeficijent refrakcije $\eta_r$
-\item Iskoristili $\sin^2 \alpha + \cos^2 \alpha= 1$
-\item Izrazili $\sin \theta_t$ pomoću $\sin \theta_i$
-\item Na kraju iskoristili činjenicu da je $\mathbf{N}\cdot \mathbf{I}= \cos\theta_i$
-\end{itemize}
-
-\end{frame}
+%
+%\section{Sjene}
+%
+%\begin{frame}{Sjene}
+%\begin{center}
+%	\includegraphics[width=8cm]{slike/sjene_01.png}
+%\end{center}
+%
+%\end{frame}
+%
+%\begin{frame}{Sjene, kostur algoritma}
+%\begin{algorithm*}[H]
+%%\KwResult{Write here the result }
+%color = ka*hit.material().kd()\;
+%\For{ za svaki izvor svjetla}
+%{
+%	Ray ray2(hitPoint, directionToLight)\;
+%	ambient = ka\;
+%	Hit hit2(distanceToLight)\;
+%	\For{ za svaki objekt}
+%	{
+%		object.intersect(ray2, hit2)\;
+%		%diffuseColor = object.intersect(ray2, hit2)\;
+%		\If{hit2->getT() == distanceToLight}
+%		{
+%			color += hit.getMaterial().shade(ray, hit, directionToLight, lightColor)\;
+%		}
+%	}
+%	
+%}
+%return color\;
+%%\caption{How to write algorithms}
+%\end{algorithm*}
+%\end{frame}
+%
+%\begin{frame}{Sjene, contd.}
+%\begin{center}
+%\includegraphics[width=4cm]{slike/sjene_02.png}
+%\end{center}
+%U čemu se razlikuju \textit{shadow} zrake u odnosu na \textit{eye} zrake?\\
+%Nije potrebno naći najbliži objekt, dovoljno je da je samo jedan između zrake i izvora svjetla 
+%\end{frame}
+%
+%\section{Refleksija}
+%\begin{frame}{Refleksija}
+%
+%\begin{center}
+%\includegraphics[width=5cm]{slike/refleksija_01.png}
+%\end{center}
+%\begin{itemize}
+%\item Odaslati zraku simetrično na normalu
+%\item pomnožiti sa zrcalnom komponentom $k_s$, ili nešto slično tome
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Refleksija, kako izračunati zrcalnu zraku}
+%
+%\begin{center}
+%\includegraphics[width=6cm]{slike/refleksija_02.png}
+%\end{center}
+%$$\mathbf{r} = \mathbf{D} - 2(\mathbf{D}\cdot \mathbf{n})\mathbf{n}$$
+%\end{frame}
+%
+%
+%\section{Prozirnost}
+%\begin{frame}{Prozirnost}
+%
+%\begin{center}
+%\includegraphics[width=5cm]{slike/prozirnost_01.png}
+%\end{center}
+%\begin{itemize}
+%\item Odaslati zraku u \textit{refrakcijskom} smjeru
+%\item pomnožiti s koeficijentom refrakcije $k_t$
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Prozirnost, contd.}
+%
+%\begin{center}
+%\includegraphics[width=3cm]{slike/prozirnost_02.png}
+%\end{center}
+%\begin{itemize}
+%\item dva materijala, dva indeksa refrakcije, $\eta_i$ i $\eta_t$
+%\end{itemize}
+%Snell-Descartes -ov zakon zakon:
+%$$\eta_i \theta_i = \eta_t \theta_t$$
+%$$\frac{\theta_t}{\theta_i} = \frac{\eta_t}{\eta_i} = \eta_r$$
+%Relativni indeks refrakcije: $\eta_r$\\
+%Cilj je odrediti smjer zrake $\mathbf{T}$
+%\end{frame}
+%
+%\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$}
+%\begin{center}
+%\includegraphics[width=3cm]{slike/prozirnost_03.png}
+%\end{center}
+%Odredimo $\mathbf{I}$ i $\mathbf{M}$:
+%\begin{align*}
+%\mathbf{I} &= \mathbf{N}\cos\theta_i - \mathbf{M}\sin\theta_i \\
+%\mathbf{M} &= (\mathbf{N}\cos\theta_i - \mathbf{I})/\sin\theta_i
+%\end{align*}
+%$\mathbf{T}$ je sada jednostavan:
+%$$ \mathbf{T} = -\mathbf{N}\cos\theta_t - \mathbf{M}\sin\theta_t $$
+%Cilj je izračunati $\mathbf{T}$ bez trigonometrijskih f-ja. Bilo bi super da možemo
+%koristiti samo skalarne produkte\ldots
+%\end{frame}
+%
+%\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
+%\begin{align}
+%\mathbf{T} &= -\mathbf{N}\cos\theta_t + \mathbf{M}\sin\theta_t \\
+%&= -\mathbf{N}\cos\theta_t + ((\mathbf{N}\cos\theta_i - \mathbf{I})/\sin\theta_i)\sin\theta_t \\
+%&= -\mathbf{N}\cos\theta_t + (\mathbf{N}\cos\theta_i - \mathbf{I})\eta_r \\
+%&= \left(\eta_r\cos\theta_i - \cos\theta_t\right)\mathbf{N} - \eta_r\mathbf{I} \\
+%&= \left(\eta_r\cos\theta_i - \sqrt{1-\sin^2\theta_t}\right)\mathbf{N} - \eta_r\mathbf{I} \\
+%&= \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2\sin^2\theta_i}\right)\mathbf{N} - \eta_r\mathbf{I} \\
+%&= \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2(1-\cos^2\theta_i)}\right)\mathbf{N} - \eta_r\mathbf{I} \\
+%\mathbf{T} &= \left(\eta_r(\mathbf{N}\cdot \mathbf{I}) - \sqrt{1-\eta_r^2(1-(\mathbf{N}\cdot \mathbf{I})^2)}\right)\mathbf{N} - \eta_r\mathbf{I}
+%\end{align}
+%\end{frame}
+%
+%\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
+%\begin{center}
+%\includegraphics[width=3cm]{slike/prozirnost_03.png}
+%\end{center}
+%\begin{itemize}
+%\item  U izvodu smo prvo zamijenili $\mathbf{M}$ iz $\mathbf{M} = (\mathbf{N}\cos\theta_i - \mathbf{I})/\sin\theta_i$
+%\item uveli koeficijent refrakcije $\eta_r$
+%\item Iskoristili $\sin^2 \alpha + \cos^2 \alpha= 1$
+%\item Izrazili $\sin \theta_t$ pomoću $\sin \theta_i$
+%\item Na kraju iskoristili činjenicu da je $\mathbf{N}\cdot \mathbf{I}= \cos\theta_i$
+%\end{itemize}
+%
+%\end{frame}
 \plain{Pitanja?}
 \end{document}
