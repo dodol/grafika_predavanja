@@ -308,7 +308,7 @@ Umjesto \textit{nasumične zrake}, odašiljemo samo jednu, u $\mathbf{R}$ smjeru
 \begin{frame}{Prozirnost, contd.}
 
 \begin{center}
-\includegraphics[width=3cm]{slike/prozirnost_02.png}
+\includegraphics[width=5cm]{slike/prozirnost.png}
 \end{center}
 \begin{itemize}
 \item dva materijala, dva indeksa refrakcije, $\eta_i$ i $\eta_t$
@@ -343,17 +343,17 @@ Umjesto \textit{nasumične zrake}, odašiljemo samo jednu, u $\mathbf{R}$ smjeru
 
 \begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$}
 \begin{center}
-\includegraphics[width=2.5cm]{slike/prozirnost_02.png}
+	\includegraphics[width=5cm]{slike/prozirnost.png}
 \end{center}
 \begin{align*}
 \mathbf{T} = \mathbf{T}_\parallel + \mathbf{T}_\perp
 \end{align*}
 \begin{align*}
-\mathbf{T}_\parallel = \frac{\eta_i}{\eta_t}\mathbf{I}_\parallel = \frac{\eta_i}{\eta_t}(\mathbf{I} + \cos \theta_i \mathbf{N})
+\mathbf{T}_\parallel = \frac{\eta_i}{\eta_t}\mathbf{I}_\parallel = \frac{\eta_i}{\eta_t}(\mathbf{I} + \cos \theta_i \mathbf{n})
 \end{align*}
-Sitnica: $ \cos \theta_i = \mathbf{I} \cdot \mathbf{N}$
+Sitnica: $ \cos \theta_i = \mathbf{I} \cdot \mathbf{n}$
 \begin{align*}
-\mathbf{T}_\perp = -\sqrt{1- |\mathbf{T}_\parallel|^2}\mathbf{N}
+\mathbf{T}_\perp = -\sqrt{1- |\mathbf{T}_\parallel|^2}\mathbf{n}
 \end{align*}
 \begin{align*}
 \mathbf{T} = \mathbf{T}_\parallel + \mathbf{T}_\perp = \frac{\eta_i}{\eta_t}\mathbf{I} + \left(\frac{\eta_i}{\eta_t} \cos \theta_i - \sqrt{1- |\mathbf{T}_\parallel|^2}\right)\mathbf{N}
@@ -363,8 +363,8 @@ Sitnica: $ \cos \theta_i = \mathbf{I} \cdot \mathbf{N}$
 
 \begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
 	\begin{align*}
-	\mathbf{T} & = \frac{\eta_i}{\eta_t}\mathbf{I} + \left(\frac{\eta_i}{\eta_t} \cos \theta_i - \sqrt{1- |\mathbf{T}_\parallel|^2}\right)\mathbf{N} \\
-	  & = \frac{\eta_i}{\eta_t}\mathbf{I} + \left(\frac{\eta_i}{\eta_t} \cos \theta_i - \sqrt{1- \sin^2 \theta_t}\right)\mathbf{N}
+	\mathbf{T} & = \frac{\eta_i}{\eta_t}\mathbf{I} + \left(\frac{\eta_i}{\eta_t} \cos \theta_i - \sqrt{1- |\mathbf{T}_\parallel|^2}\right)\mathbf{n} \\
+	  & = \frac{\eta_i}{\eta_t}\mathbf{I} + \left(\frac{\eta_i}{\eta_t} \cos \theta_i - \sqrt{1- \sin^2 \theta_t}\right)\mathbf{n}
 	\end{align*}
 	Par identiteta:
 	\begin{itemize}
@@ -373,36 +373,231 @@ Sitnica: $ \cos \theta_i = \mathbf{I} \cdot \mathbf{N}$
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
-	Ovdje smo stali:
-	\begin{align*}
-	\mathbf{T} = \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2\sin^2\theta_i}\right)\mathbf{N} - \eta_r\mathbf{I} 
-	\end{align*}
-	Opet trigonometrija: $\sin^2 \alpha + \cos^2 \alpha= 1$
-	\begin{align*}
-	\mathbf{T} = \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2(1-\cos^2\theta_i)}\right)\mathbf{N} - \eta_r\mathbf{I}
-	\end{align*}
-	Konačno, $\mathbf{N}\cdot \mathbf{I}= \cos\theta_i$
-	
-	\begin{block}{Konačan izraz}
-		\begin{align*}
-		\mathbf{T} = \left(\eta_r(\mathbf{N}\cdot \mathbf{I}) - \sqrt{1-\eta_r^2(1-(\mathbf{N}\cdot \mathbf{I})^2)}\right)\mathbf{N} - \eta_r\mathbf{I}
-		\end{align*}
-		Sve što nam treba:
-		\begin{itemize}
-			\item normala
-			\item smjer od kuda dolazi zraka
-			\item koeficijent refrakcije
-		\end{itemize}
-	\end{block}
-\end{frame}
+%\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
+%	Ovdje smo stali:
+%	\begin{align*}
+%	\mathbf{T} = \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2\sin^2\theta_i}\right)\mathbf{N} - \eta_r\mathbf{I} 
+%	\end{align*}
+%	Opet trigonometrija: $\sin^2 \alpha + \cos^2 \alpha= 1$
+%	\begin{align*}
+%	\mathbf{T} = \left(\eta_r\cos\theta_i - \sqrt{1-\eta_r^2(1-\cos^2\theta_i)}\right)\mathbf{N} - \eta_r\mathbf{I}
+%	\end{align*}
+%	Konačno, $\mathbf{N}\cdot \mathbf{I}= \cos\theta_i$
+%	
+%	\begin{block}{Konačan izraz}
+%		\begin{align*}
+%		\mathbf{T} = \left(\eta_r(\mathbf{N}\cdot \mathbf{I}) - \sqrt{1-\eta_r^2(1-(\mathbf{N}\cdot \mathbf{I})^2)}\right)\mathbf{N} - \eta_r\mathbf{I}
+%		\end{align*}
+%		Sve što nam treba:
+%		\begin{itemize}
+%			\item normala
+%			\item smjer od kuda dolazi zraka
+%			\item koeficijent refrakcije
+%		\end{itemize}
+%	\end{block}
+%\end{frame}
 
 \begin{frame}{Refrakcija i refleksija?}
 	\begin{itemize}
 		\item Što ako je zraka unutar materijala s većim indeksom refrakcije?
 	\end{itemize}
 	\begin{align*}
-		\cos \theta_o = \frac{\eta_i}{\eta_o} \cos \theta_i
+	\eta_i \sin \theta_i = \eta_t \sin \theta_t
+	\end{align*}
+	\begin{itemize}
+		\item Ili:
+	\end{itemize}
+	\begin{align*}
+	\sin \theta_t = \frac{\eta_i}{\eta_t} \sin \theta_i
+	\end{align*}
+	\begin{itemize}
+		\item Ako je $\sin \theta_i > \frac{\eta_t}{\eta_i}$, onda $\sin \theta_t > 1$! 
+		\item Potpuna unutrašnja refleksija (\textit{total internal reflection})
+	\end{itemize}
+	Još jedan uvjet:
+	\begin{align*}
+		\sin \theta_t = \frac{\eta_i}{\eta_t} \sin \theta_i \Leftrightarrow \sin \theta_i \leq \frac{\eta_t}{\eta_i}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Kritični kut}
+	Iz \begin{align*}
+	\mathbf{T} = \frac{\eta_i}{\eta_t}\mathbf{I} + \left(\frac{\eta_i}{\eta_t} \cos \theta_i - \sqrt{1- \sin^2 \theta_t}\right)\mathbf{n}
+	\end{align*}
+	mora vrijediti $\sin^2 \theta_t < 1$, odnosno, vrijedi uvjet $\sin \theta_i \leq \frac{\eta_t}{\eta_i}$.
+	
+	\begin{block}{}
+		Ako uvjet $\sin \theta_i \leq \frac{\eta_t}{\eta_i}$ \alert{nije} zadovoljen, onda nema \alert{refrakcije}.
+		
+		Ulazni kut pri kojem taj uvjet prestaje vrijediti: 
+		\begin{align*}
+			\theta_c = \arcsin \frac{\eta_t}{\eta_i} \Leftrightarrow \eta_i > \eta_t
+		\end{align*}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Potpuna unutrašnja refleksija}
+	\begin{block}{story time!}
+		Svaki foton koji nailazi na \textit{granicu} u smjeru $\mathbf{I}$ može:
+		\begin{itemize}
+			\item proći kroz granicu u smjeru $\mathbf{T}$ (transmisija)
+			\item odbiti se u smjeru  $\mathbf{R}$ (refleksija)
+		\end{itemize}
+		Od svih fotona koji naiđu na granicu, dio se reflektira(\textit{reflectance}, $R$) a dio se \textit{produži dalje} (\textit{transmittance}, $T$). Odnosno,
+		$$T + R = I$$
+		Količina reflektiranih i transmisijskih fotona ovisi o refrakcijskim indeksima $\eta_i$ i $\eta_t$, kao i o kutu
+		upada $\theta_i$, što je opisano \textit{Fresnelovim} jednadžbama.
+	\end{block}
+	\begin{block}{tldr}
+		Fresnelove jednadžbe previše komplicirane, potrebno smisliti način kako modelirati prozirnost i refleksiju.
+		
+		Npr. staklo ili voda su prozirni, ali u nekim uvjetima mogu poslužiti kao ogledalo.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Schlickova aproksimacija}
+	Aproksimacija \textit{Fresnelovih} jednadžbi:
+	\begin{align*}
+	\mathbf{R}_{Schlick}(\theta_i) = R_0 + (1-R_0)(1-\cos \theta_i)^5
+	\end{align*}
+	gdje je 
+	$$
+	R_0 = \left(\frac{\eta_i-\eta_t}{\eta_i+\eta_t}\right)^2
+	$$
+	Gornji izraz ne modelira refleksiju za $\eta_i > \eta_t$. Potrebno koristiti $\cos \theta_t$ umjesto $\cos \theta_i$ za prethodni uvjet:
+	\begin{align*}
+	\mathbf{R}_{Schlick}(\theta_i) \begin{cases}
+		R_0 + (1-R_0)(1-\cos \theta_i)^5 & \eta_i\leq\eta_t \\
+		R_0 + (1-R_0)(1-\cos \theta_t)^5 & \eta_i > \eta_t \land \neg \mathrm{TIR}\\
+		1 & \land \mathrm{TIR}
+	\end{cases}      
+	\end{align*}
+\end{frame}
+
+\section{Fokus}
+\begin{frame}{Focus blur}
+	\begin{center}
+		\includegraphics[width=5cm]{slike/fig-1.18-cam-film-plane.jpg}
+	\end{center}
+\begin{itemize}
+	\item Blur: generirati zrake koje se odašilju unutar diska čiji je centar točka gledišta.
+	\item Fokus svugdje: sve se zrake odašilju iz jedne točke, ili, disk polumjera $0$
+\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=5cm]{slike/img-1.21-book1-final.jpg}
+	\end{center}
+\end{frame}
+
+\section{Teksture, opet}
+\begin{frame}{Teksture i sfere}
+	\begin{itemize}
+		\item Za sferu $r=1$:
+		\item Tekstura: $0 \leq u,v \leq 1$
+		\item Sferne koordinate: $(\theta, \phi)$, $\theta$
+		\begin{itemize}
+			\item analogija: geografska dužina $\theta$ i širina $\phi$
+		\end{itemize}
+		\item Preslikavanje: $u = \phi/(2 \pi)$, $v = \theta / \pi$
+		\item Iz: $x = -\cos \theta$, $y = -\cos (\phi) \sin (\theta)$, $z = \sin (\phi) \cos (\theta)$
+		\item $\phi = \text{atan2}(-z, x) + \pi$, $\theta= \arccos(-y)$
+		\begin{itemize}
+			\item $\text{atan2}$ je $\tan$, ali...
+			\item za interval $-\pi < \text{atan2(y,x)} \leq \pi$
+			\item Ovdje je $x = \cos(\alpha)$, $y = \sin (\alpha)$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Generiranje teksture}
+	Ovo je jednostavno:
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Uzmimo koordinatu točke ($x_p$)
+				\item $c =\sin (x_p)$
+				\item $c >0$, jedna boja
+				\item $c <0$, druga boja
+				\item želimo li kontrolirati širinu $w$: $c =\sin (\pi x_p / w)$
+				\item Želimo li interpolirati boje: 
+				\begin{itemize}
+					\item $t = (1 + \sin (\pi x_p / w))/2$
+					\item $(1-t)c_0 + t c_1$ - linearna interpolacija
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+				\includegraphics[width=2cm]{slike/stripes_teksture.png}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Perlin noise}
+	\begin{itemize}
+		\item Umjesto regularne strukure, želimo nasumičnu, pjegavu, išaranu teksturu
+		\item Kreirati \textit{random} broj za svaku točku nije baš pametno 
+		\item Želimo glatku strukturu, bez odricanja nasumične komponente
+	\end{itemize}
+	
+	
+%	\begin{align*}
+%		n(x, y, z) = \sum_{i = \lfloor x \rfloor}^{\lfloor x \rfloor + 1}
+%		\sum_{j = \lfloor y \rfloor}^{\lfloor y \rfloor + 1}
+%		\sum_{k = \lfloor z \rfloor}^{\lfloor z \rfloor + 1}
+%		\Omega_{ijk}(x-i,y-j, z-k)
+%	\end{align*}
+%	
+%	\begin{align*}
+%	\Omega_{ijk}(u, v, w) = \omega(u)\omega(v)\omega(w)(\Gamma\cdot())
+%	\end{align*}
+\end{frame}
+\begin{frame}{Perlin noise}
+	Za svaku točku  teksture $x, y$ kreiramo jedinični kvadrat $\left[x, y \right] \% 1$
+	\begin{center}
+		\includegraphics[width=2cm]{slike/logic01.png}
+	\end{center}
+	Za sve točke kreiramo \textit{pseudo random} vektor
+	\begin{center}
+		\includegraphics[width=3cm]{slike/logic02.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Perlin noise}
+	Izračunamo vektore od točaka kvadrata do točke $x, y$ (\textit{distance} vektor)
+	\begin{center}
+		\includegraphics[width=2cm]{slike/logic03.png}
+	\end{center}
+	\begin{itemize}
+		\item Sada za svaku točku kvadrata izračunamo skalarni produkt \textit{gradient} i \textit{distance} vektora.
+		\item Rezultat? Skalarni produkt je pozitivan u smjeru gradijenta, negativan inače
+		\item Slika prikazuje utjecaj pozitivnih i negativnih skalarnih produkata
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=3cm]{slike/logic04.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Perlin noise}
+	\begin{itemize}
+		\item potrebno interpolirati ta 4 skalarna produkta, koristeći tzv. \textit{weight function}.
+		\item \textit{weight function} primjer: $w(t) = 2|t|^3 - 3|t|^2 + 1$
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Ključno: Perlin noise se ponavlja
+		\item Za svaku 3D točku uvijek vraća isti nasumični broj.
+		\item Bliske točke vraćaju slične brojeve
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Perlin noise, stvarno kraj}
+	\begin{align*}
+		perlin(x, y) = \sum_{k}noise(freq(k)\cdot (x,y))\cdot scale(k)
+	\end{align*}
+	\begin{align*}
+	freq(k) = 2^k 
 	\end{align*}
 \end{frame}
 %\begin{frame}{Prozirnost, kako odrediti $\mathbf{T}$, contd.}
