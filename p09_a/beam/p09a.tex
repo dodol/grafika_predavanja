@@ -34,7 +34,7 @@
 
 \title{Ray tracing}
 
-\subtitle{Podnaslov}
+\subtitle{I choose where the light gets in;	an image mirroring my very being upon the canvas}
 \institute{Računalna grafika}
 
 % Delete this, if you do not want the table of contents to pop up at
@@ -317,7 +317,7 @@ Umjesto \textit{nasumične zrake}, odašiljemo samo jednu, u $\mathbf{R}$ smjeru
 	\begin{column}{0.5\textwidth}
 		Snell-Descartes -ov zakon zakon:
 		\begin{align*}
-		\sin \eta_i \theta_i = \eta_t \sin\theta_t%  \\
+		\eta_i \sin \theta_i = \eta_t \sin\theta_t%  \\
 		% \frac{\sin\theta_t}{\sin\theta_i} = \frac{\eta_t}{\eta_i} = \eta_r
 		\end{align*}
 		% Relativni indeks refrakcije: $\eta_r$\\
@@ -445,13 +445,13 @@ Sitnica: $ \cos \theta_i = \mathbf{I} \cdot \mathbf{n}$
 		\end{itemize}
 		Od svih fotona koji naiđu na granicu, dio se reflektira(\textit{reflectance}, $R$) a dio se \textit{produži dalje} (\textit{transmittance}, $T$). Odnosno,
 		$$T + R = I$$
-		Količina reflektiranih i transmisijskih fotona ovisi o refrakcijskim indeksima $\eta_i$ i $\eta_t$, kao i o kutu
+		Količina reflektiranih i transmitiranih fotona ovisi o refrakcijskim indeksima $\eta_i$ i $\eta_t$, kao i o kutu
 		upada $\theta_i$, što je opisano \textit{Fresnelovim} jednadžbama.
 	\end{block}
-	\begin{block}{tldr}
+	\begin{block}{zaključno}
 		Fresnelove jednadžbe previše komplicirane, potrebno smisliti način kako modelirati prozirnost i refleksiju.
 		
-		Npr. staklo ili voda su prozirni, ali u nekim uvjetima mogu poslužiti kao ogledalo.
+		Npr. staklo ili voda su prozirni, ali u nekim uvjetima se mogu ponašati kao ogledalo.
 	\end{block}
 \end{frame}
 
@@ -472,6 +472,9 @@ Sitnica: $ \cos \theta_i = \mathbf{I} \cdot \mathbf{n}$
 		1 & \land \mathrm{TIR}
 	\end{cases}      
 	\end{align*}
+	\begin{tiny}
+		Simboli: $\land$ - \&\& ili AND, \qquad $\neg$ - ! ili NOT
+	\end{tiny}
 \end{frame}
 
 \section{Fokus}
