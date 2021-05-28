@@ -34,7 +34,7 @@
 
 \title{Ray tracing i prostor}
 
-\subtitle{Podnaslov}
+\subtitle{No more}
 \institute{Računalna grafika}
 
 % Delete this, if you do not want the table of contents to pop up at
@@ -404,8 +404,8 @@ Ako je čvor \textit{leaf}:
 \end{itemize}
 \end{frame}
 
-\section{Pravokutnik}
-\begin{frame}{Primitiv kao izvor svjetla}
+\section{Pravokutnik i kvadar}
+\begin{frame}{Model pravokutnika}
 	\begin{itemize}
 		\item Pravokutnik je definiran u $xy$ ravnini.
 		\item Ravnina pravokutnika je definirana $z$ koordinatom, npr. $z=k$
@@ -425,6 +425,113 @@ Ako je čvor \textit{leaf}:
 	y &= \mathbf{o}_y + t\mathbf{d}_y \\
 	\end{align*}
 	Samo još treba provjeriti $x_0 < x < x_1$ i $y_0 < y < y_1$
+\end{frame}
+
+\begin{frame}{Model pravokutnika, contd.}
+	\begin{itemize}
+		\item Pravokutnik je definiran u $xz$ ravnini.
+		\item Ravnina pravokutnika je definirana $y$ koordinatom, npr. $y=k$
+		\item Definiramo još $4$ linije sa $x=x_0$, $x=x_1$, $z=z_0$ i $z=z_1$
+	\end{itemize}
+
+	Za zraku $\mathbf{P}(t) = \mathbf{o} + t\mathbf{d}$, $z$ komponenta je definirana sa $\mathbf{P}_y(t) = \mathbf{o}_y + t\mathbf{d}_y$. Kako je $y=k$,
+	$$
+	t = \frac{k-\mathbf{o}_y}{\mathbf{d}_y}
+	$$
+	Sada možemo izračunati $x$ i $z$:
+	\begin{align*}
+	x &= \mathbf{o}_x + t\mathbf{d}_x \\
+	z &= \mathbf{o}_z + t\mathbf{d}_z \\
+	\end{align*}
+	Samo još treba provjeriti $x_0 < x < x_1$ i $z_0 < z <z_1$
+	
+	\begin{itemize}
+		\item Za pravokutnik definiran u $yz$?
+		\item Djeluje prilično jednostavno...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Model pravokutnika i kvadar}
+	\textbf{tldr;}
+	
+	\begin{itemize}
+		\item Ovisno o ravnini, treba riješiti tri jednadžbe
+	\end{itemize}
+
+	Za zraku $\mathbf{P}(t) = \mathbf{o} + t\mathbf{d}$, komponente $x$, $y$ ili $z$ označimo je sa $os$, komponenta je definirana sa $\mathbf{P}_{os}(t) = \mathbf{o}_{os} + t\mathbf{d}_{os}$. Kako je $os=k$,
+	$$
+	t = \frac{k-\mathbf{o}_{os}}{\mathbf{d}_{os}}
+	$$
+	Sada možemo izračunati ostale komponente $os_i$:
+	\begin{align*}
+	x_{os_i} &= \mathbf{o}_{os_i} + t\mathbf{d}_{os_i} \\
+	\end{align*}
+	Samo još treba provjeriti ${os_i}_0 < {os_i} < {os_i}_1$
+	
+	\begin{itemize}
+		\item Detalj implementacije, jer BVH:
+		\item Ne želimo 2D pravokutnik
+		\item Dodaje se mala debljina u $os$ smjeru 
+		\item Kvadar? - Ovo je lako: $6$ pravokutnika
+	\end{itemize}
+\end{frame}
+
+\section{Instancing i još jedna sitnica}
+\begin{frame}{Instancing}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{slike/instancing.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Instancing}
+	Ideja je može biti jednostavnija:
+	\begin{itemize}
+		\item Promijeniti sve točke objekta transformacijskom matricom prije no što se objekt prikaže
+		\item Zanimljivo: Može se odabrati prostor u kojem se računa presjecište
+		\begin{itemize}
+			\item Objekt se sastoji od liste točaka, označimo jednu sa $\mathbf{p}$
+			\item Množenjem transformacijskom matricom $\mathbf{M}$ možemo dobiti transformiranu točku $\mathbf{p}' = \mathbf{M} \mathbf{p}$
+			\item Zraku množimo s inverznom matricom transformacije  $\mathbf{M}^{-1}$
+			\item Ili: $\mathbf{P}'(t) = \mathbf{M}^{-1}\mathbf{o} + \mathbf{M}^{-1}\mathbf{d}$
+			\item Posljedica? $t$ ostaje nepromijenjen!
+			\item Važno:$\mathbf{d}' = \mathbf{M}^{-1}\mathbf{d}$ \textbf{NIJE} jedinični vektor!
+			\item Normala? Paaa: $\mathbf{n} = \left(\mathbf{M}^{-1}\right)^T$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Instancing}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{slike/instancing_primjer.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Najkraće ikada o CSG}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+				\begin{center}
+				\includegraphics[height=0.8\textheight]{slike/csg_01.png}
+			\end{center}
+		\end{column}
+	\begin{column}{0.5\textwidth}
+		\begin{center}
+			\includegraphics[height=0.8\textheight]{slike/csg_02.png}
+		\end{center}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Volumeni, odnosno magla}
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{slike/fig-2.08-ray-vol.jpg}
+	\end{center}
+	Osnovna ideja:
+	\begin{itemize}
+		\item Zraka se u volumenu može odbiti u bilo kom smjeru na bilo kojem mjestu unutar volumena
+		\item Definiramo bbox volumena
+		\item Odredimo vjerojatnost odbijanja na nekoj maloj udaljenosti $\Delta L$: $p = C\Delta L$, gdje je $C$ konstanta proporcionalna s optičkom gustoćom volumena.
+		\item Odnosno, za zadanu vjerojatnost dobijemo $\Delta L$
+	\end{itemize}
 \end{frame}
 \section{Izvori svjetla, emisija}
 
