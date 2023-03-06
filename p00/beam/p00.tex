@@ -48,7 +48,7 @@
 \section{Obveze}
 \begin{frame}
 	\begin{itemize}
-		\item Tijekom semestra je moguće dobiti najviše 50 bodova, kao i na završnom ispitu.
+		\item Tijekom semestra je moguće dobiti najviše 70 bodova, kao i na završnom ispitu.
 		\item Obveze: Uspješno položena dva kolokvija i jedna domaća zadaća.
 	\end{itemize}
 \end{frame}
@@ -64,13 +64,14 @@
 	\end{itemize}
 \begin{center}
 	\includegraphics[height=3cm]{./slike/programming_meme_bird.png}
+	\includegraphics[height=3cm]{./slike/pole_screws.jpg}
 \end{center}
 \end{frame}
 \begin{frame}{Kolokviji}
 	\begin{itemize}
-		\item Svaki kolokvij iznosi $K_k = 15$ bodova. 
-		\item Najmanji broj bodova za koje se smatra da je student/ica uspješno položila kolokvij iznosi $K_k = 7$ bodova, odnosno najviše $30$ i minimalno $14$ bodova iz oba kolokvija.
-		\item Ako se na jednom ili oba kolokvija dobije manje od $K_k < 7$ bodova, piše se popravni kolokvij koji obuhvaća gradivo oba kolokvija i bodovno iznosi najviše $30$ bodova.
+		\item Svaki kolokvij iznosi $K_k = 25$ bodova. 
+		\item Najmanji broj bodova za koje se smatra da je student/ica uspješno položila kolokvij iznosi $K_k = 12$ bodova, odnosno najviše $50$ i minimalno $24$ bodova iz oba kolokvija.
+		\item Ako se na jednom ili oba kolokvija dobije manje od $K_k < 12$ bodova, piše se popravni kolokvij koji obuhvaća gradivo oba kolokvija i bodovno iznosi najviše $50$ bodova.
 	\end{itemize}
 \end{frame}
 
@@ -86,7 +87,7 @@ gdje je $K_{dz}$ broj bodova domaće zadaće, a $K_k$ broj bodova na kolokvijima
 \\\hrulefill\\
 Kolokviji, 
 	\begin{align*}
-		\textrm{if}&&  K1>=7 \&\& K2>=7 &:&          K_k = K_1 + K_2 \\
+		\textrm{if}&&  K_1>=12\  \mathtt{and}  \ K_2>=12 &:&          K_k = K_1 + K_2 \\
 		\textrm{else}&&   &&          K_k = \frac{K_1+K_2 + K_p}{2}
 	\end{align*}
 Ovdje su $K_1$ i $K_2$ broj bodova na 1. odnosno 2. kolokviju, a $K_p$ broj bodova na popravnom kolokviju.
@@ -97,8 +98,8 @@ Ovdje su $K_1$ i $K_2$ broj bodova na 1. odnosno 2. kolokviju, a $K_p$ broj bodo
 \begin{frame}{Bodovi tldr;}
 	\begin{block}{}
 		\begin{itemize}
-			\item Minimalni broj bodova: dz 11, kolokviji 7 bodova. 
-			\item Ako  je jedan ili oba kolokvija <7, piše se jedan popravni kolokvij koji obuhvaća oba kolokvija. 
+			\item Minimalni broj bodova: dz 11, kolokviji 12 bodova. 
+			\item Ako  je jedan ili oba kolokvija <12, piše se jedan popravni kolokvij koji obuhvaća oba kolokvija. 
 			\item Ukupna ocjena iz kolokvija je srednja vrijednost oba kolokvija i popravnog kolokvija. 
 			\item Ako je dz <11, onda tražim da ispravite kod i predate opet.  
 		\end{itemize}
@@ -112,12 +113,13 @@ Ovdje su $K_1$ i $K_2$ broj bodova na 1. odnosno 2. kolokviju, a $K_p$ broj bodo
 		\begin{column}{0.4 \textwidth}
 			\textbf{Predavanja}
 				\begin{itemize}
-				\item Uvod u računalnu grafiku
 				\item Osnovni koncepti/algoritmi/tehnike
 				\item Interpolacije
 				\item Geometrijske transformacije
 				\item Krivulje i plohe
 				\item Strukture podataka
+				\item Svjetlo, boje, materijali i sjene
+				\item Ray tracing
 			\end{itemize}
 		\end{column}
 
@@ -125,11 +127,10 @@ Ovdje su $K_1$ i $K_2$ broj bodova na 1. odnosno 2. kolokviju, a $K_p$ broj bodo
 		\begin{column}{0.4 \textwidth}
 			\textbf{Vježbe}
 		\begin{itemize}
-			\item C++
+			\item C++17
 			\item CMake
 			\item OpenGL
-			\item GLFW, GLEW, glm
-			\item shaders
+			\item GLFW, GLEW, glm, glsl
 			\item Preferiram Linux, ali ok su i Windows-i
 		\end{itemize}
 	\end{column}
@@ -138,7 +139,7 @@ Ovdje su $K_1$ i $K_2$ broj bodova na 1. odnosno 2. kolokviju, a $K_p$ broj bodo
 
 \begin{frame}{Literatura}
 	\begin{itemize}
-		\item Čupić M. i Mihajolović Ž. ; \textit{Interaktivna računalna grafika kroz primjere u OpenGL-u}
+		\item Čupić M. i Mihajlović Ž. ; \textit{Interaktivna računalna grafika kroz primjere u OpenGL-u}
 		\item Marschner S., Shirley P.; \textit{Fundamentals of Computer Graphics}, 4. izdanje, 2016
 	\end{itemize}
 \end{frame}
